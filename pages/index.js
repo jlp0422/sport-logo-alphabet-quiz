@@ -110,13 +110,13 @@ function Home() {
   const setGameFinal = () => dispatch({ type: 'GAME_OVER' })
 
   return (
-    <div className="container mx-auto">
+    <div className="mx-auto flex flex-col justify-center items-center min-h-screen px-2">
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <main className="main">
+      <main className="flex flex-col justify-center items-center flex-1 py-8">
         {state.status === STATUSES.NOT_STARTED && (
           <div className="start">
             <label htmlFor='logo-selection'>
@@ -140,6 +140,7 @@ function Home() {
             <Button
               disabled={!state.remainingLogos.length}
               onClick={onStartGame}
+              modifier="green"
             >
               Start game!
             </Button>
