@@ -1,8 +1,8 @@
-import styles from '../styles/Button.module.css'
+// import styles from '../styles/Button.module.css'
 
 const Button = ({ children, onClick, disabled, modifier }) => {
   return (
-    <button className={styles[modifier]} onClick={onClick} disabled={disabled}>
+    <button className="modifier" onClick={onClick} disabled={disabled}>
       {children}
     </button>
   )

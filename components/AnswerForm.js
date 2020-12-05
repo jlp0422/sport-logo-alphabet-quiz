@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../styles/AnswerForm.module.css'
+// import styles from '../styles/AnswerForm.module.css'
 import Button from '../components/Button'
 
 const AnswerForm = ({
@@ -25,7 +25,7 @@ const AnswerForm = ({
     <>
       <input
         type='text'
-        className={styles.input}
+        className="input"
         value={answer}
         onChange={ev => setAnswer(ev.target.value)}
         readOnly={hasGuessed}

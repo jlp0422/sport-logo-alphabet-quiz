@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Logo from '../components/Logo'
 import Button from '../components/Button'
 import AnswerForm from '../components/AnswerForm'
-import styles from '../styles/Home.module.css'
+// import styles from '../styles/Home.module.css'
 import { MLB_LOGOS, NBA_LOGOS } from '../constants'
 
 const NOT_STARTED = 'NOT_STARTED'
@@ -110,15 +110,15 @@ function Home() {
   const setGameFinal = () => dispatch({ type: 'GAME_OVER' })
 
   return (
-    <div className={styles.container}>
+    <div className="container mx-auto">
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <main className={styles.main}>
+      <main className="main">
         {state.status === STATUSES.NOT_STARTED && (
-          <div className={styles.start}>
+          <div className="start">
             <label htmlFor='logo-selection'>
               Select which logos you want to use:
             </label>
@@ -156,9 +156,9 @@ function Home() {
 
         {GAME_IN_PROGRESS_STATUSES.includes(state.status) && (
           <>
-            <h1 className={styles.title}>Guess the team by letter:</h1>
+            <h1 className="title">Guess the team by letter:</h1>
 
-            <div className={styles.grid}>
+            <div className="grid">
               {state.status === STATUSES.CORRECT_GUESS && (
                 <h2>You guessed correct! {getLogoCopy(state.activeLogo)}</h2>
               )}
@@ -167,7 +167,7 @@ function Home() {
                   Nope, that's not correct! {getLogoCopy(state.activeLogo)}
                 </h2>
               )}
-              <div className={styles.logo}>
+              <div className="logo">
                 <Logo
                   logo={state.activeLogo}
                   isWaitingForGuess={state.status === WAITING_FOR_GUESS}
@@ -190,7 +190,7 @@ function Home() {
         )}
       </main>
 
-      <footer className={styles.footer}>Built by Jeremy Philipson</footer>
+      <footer className="footer">Built by Jeremy Philipson</footer>
     </div>
   )
 }
