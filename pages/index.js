@@ -110,7 +110,7 @@ function Home() {
   const setGameFinal = () => dispatch({ type: 'GAME_OVER' })
 
   return (
-    <div className="mx-auto flex flex-col justify-center items-center min-h-screen px-2">
+    <div className="mx-auto flex flex-col justify-center items-center min-h-screen">
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
@@ -118,7 +118,7 @@ function Home() {
 
       <main className="flex flex-col justify-center items-center flex-1 py-8">
         {state.status === STATUSES.NOT_STARTED && (
-          <div className="start">
+          <div className="flex flex-col h-40 justify-around">
             <label htmlFor='logo-selection'>
               Select which logos you want to use:
             </label>
@@ -127,6 +127,7 @@ function Home() {
               id='logo-selection'
               name='logo-selection'
               defaultValue='0'
+              className="form-select mt-1 block w-full"
             >
               <option value='0' disabled>
                 Select...
@@ -157,9 +158,9 @@ function Home() {
 
         {GAME_IN_PROGRESS_STATUSES.includes(state.status) && (
           <>
-            <h1 className="title">Guess the team by letter:</h1>
+            <h1 className="text-5xl m0 text-center">Guess the team by letter:</h1>
 
-            <div className="grid">
+            <div className="flex flex-col justify-center items-center max-w-screen-md flex-wrap">
               {state.status === STATUSES.CORRECT_GUESS && (
                 <h2>You guessed correct! {getLogoCopy(state.activeLogo)}</h2>
               )}
@@ -168,7 +169,7 @@ function Home() {
                   Nope, that's not correct! {getLogoCopy(state.activeLogo)}
                 </h2>
               )}
-              <div className="logo">
+              <div className="m2 p2 text-left ">
                 <Logo
                   logo={state.activeLogo}
                   isWaitingForGuess={state.status === WAITING_FOR_GUESS}
@@ -191,7 +192,7 @@ function Home() {
         )}
       </main>
 
-      <footer className="footer">Built by Jeremy Philipson</footer>
+      <footer className="w-full h-28 flex justify-center items-center border-t border-solid border-gray-200">Built by Jeremy Philipson</footer>
     </div>
   )
 }

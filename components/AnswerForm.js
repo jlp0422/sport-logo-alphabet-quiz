@@ -23,14 +23,20 @@ const AnswerForm = ({
   }
   return (
     <>
-      <input
-        type='text'
-        className="input"
-        value={answer}
-        onChange={ev => setAnswer(ev.target.value)}
-        readOnly={hasGuessed}
-      />
-      <Button disabled={hasGuessed || !answer} onClick={onSubmit} modifier='blue'>
+      <div class='mt-1 relative rounded-md shadow-sm'>
+        <input
+          type='text'
+          className='focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'
+          value={answer}
+          onChange={ev => setAnswer(ev.target.value)}
+          readOnly={hasGuessed}
+        />
+      </div>
+      <Button
+        disabled={hasGuessed || !answer}
+        onClick={onSubmit}
+        modifier='blue'
+      >
         Submit
       </Button>
       <Button disabled={hasGuessed} onClick={clearAnswer} modifier='gray'>

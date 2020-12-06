@@ -9,7 +9,7 @@ const Logo = ({ logo, isWaitingForGuess }) => {
       title={isWaitingForGuess ? 'Guess the logo' : logo.title}
       width='300'
       height='300'
-      className="image"
+      className="object-contain"
     />
   )
 }
