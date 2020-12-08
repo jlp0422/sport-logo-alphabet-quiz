@@ -1,9 +1,9 @@
 import { useReducer } from 'react'
 import Head from 'next/head'
-import Logo from '../components/Logo'
-import Button from '../components/Button'
 import AnswerForm from '../components/AnswerForm'
-// import styles from '../styles/Home.module.css'
+import GameOver from '../components/GameOver'
+import PreGame from '../components/PreGame'
+import InProgressGame from '../components/InProgressGame'
 import { MLB_LOGOS, NBA_LOGOS } from '../constants'
 
 const NOT_STARTED = 'NOT_STARTED'
@@ -104,78 +104,51 @@ function Home() {
     setActiveLogo()
   }
 
+  const getHighScore = () => {
+    // get from local storage
+    // for just played sport
+    return 7
+  }
+
   const setCorrectGuess = () => dispatch({ type: 'CORRECT_GUESS' })
   const setIncorrectGuess = () => dispatch({ type: 'INCORRECT_GUESS' })
   const restartGame = () => dispatch({ type: 'RESET_GAME' })
   const setGameFinal = () => dispatch({ type: 'GAME_OVER' })
 
   return (
-    <div className="mx-auto flex flex-col justify-center items-center min-h-screen">
+    <div className='mx-auto flex flex-col justify-center items-center min-h-screen'>
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <main className="flex flex-col justify-center items-center flex-1 py-8">
+      <main className='flex flex-col justify-center items-center flex-1 py-8'>
         {state.status === STATUSES.NOT_STARTED && (
-          <div className="flex flex-col h-40 justify-around">
-            <label htmlFor='logo-selection'>
-              Select which logos you want to use:
-            </label>
-            <select
-              onChange={onSelectLogos}
-              id='logo-selection'
-              name='logo-selection'
-              defaultValue='0'
-              className="form-select mt-1 block w-full"
-            >
-              <option value='0' disabled>
-                Select...
-              </option>
-              {Object.keys(logosBySport).map(sport => (
-                <option key={sport} value={sport}>
-                  {sport}
-                </option>
-              ))}
-            </select>
-            <Button
-              disabled={!state.remainingLogos.length}
-              onClick={onStartGame}
-              modifier="green"
-            >
-              Start game!
-            </Button>
-          </div>
+          <PreGame
+            onSelectLogos={onSelectLogos}
+            sportLogos={Object.keys(logosBySport)}
+            onStartGame={onStartGame}
+            hasSelectedSport={state.remainingLogos.length}
+          />
         )}
 
         {state.status === STATUSES.GAME_OVER && (
-          <div>
-            <h2>final stats:</h2>
-            <h4>correct guesses: {state.correctGuesses}</h4>
-            <Button onClick={restartGame}>start new game!</Button>
-          </div>
+          <GameOver
+            correctGuesses={state.correctGuesses}
+            restartGame={restartGame}
+            getHighScore={getHighScore()}
+          />
         )}
 
         {GAME_IN_PROGRESS_STATUSES.includes(state.status) && (
           <>
-            <h1 className="text-5xl m0 text-center">Guess the team by letter:</h1>
-
-            <div className="flex flex-col justify-center items-center max-w-screen-md flex-wrap">
-              {state.status === STATUSES.CORRECT_GUESS && (
-                <h2>You guessed correct! {getLogoCopy(state.activeLogo)}</h2>
-              )}
-              {state.status === STATUSES.INCORRECT_GUESS && (
-                <h2>
-                  Nope, that's not correct! {getLogoCopy(state.activeLogo)}
-                </h2>
-              )}
-              <div className="m2 p2 text-left ">
-                <Logo
-                  logo={state.activeLogo}
-                  isWaitingForGuess={state.status === WAITING_FOR_GUESS}
-                />
-              </div>
-            </div>
+            <InProgressGame
+              isCorrectGuess={state.status === STATUSES.CORRECT_GUESS}
+              isIncorrectGuess={state.status === STATUSES.INCORRECT_GUESS}
+              isWaitingForGuess={state.status === WAITING_FOR_GUESS}
+              postGuessCopy={getLogoCopy(state.activeLogo)}
+              activeLogo={state.activeLogo}
+            />
             <AnswerForm
               onNextLogo={setActiveLogo}
               logo={state.activeLogo}
@@ -192,7 +165,9 @@ function Home() {
         )}
       </main>
 
-      <footer className="w-full h-28 flex justify-center items-center border-t border-solid border-gray-200">Built by Jeremy Philipson</footer>
+      <footer className='w-full h-16 flex justify-center items-center border-t border-solid border-gray-200'>
+        Built by Jeremy Philipson
+      </footer>
     </div>
   )
 }

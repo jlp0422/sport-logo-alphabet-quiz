@@ -1,5 +1,4 @@
 import Image from 'next/image'
-// import styles from '../styles/Logo.module.css'
 
 const Logo = ({ logo, isWaitingForGuess }) => {
   return (
@@ -7,8 +6,8 @@ const Logo = ({ logo, isWaitingForGuess }) => {
       src={`/logos/${logo.filename}.png`}
       alt={isWaitingForGuess ? 'Guess the logo' : logo.title}
       title={isWaitingForGuess ? 'Guess the logo' : logo.title}
-      width='300'
-      height='300'
+      width='225'
+      height='225'
       className="object-contain"
     />
   )

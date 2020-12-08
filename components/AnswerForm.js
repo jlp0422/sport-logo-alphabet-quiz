@@ -1,6 +1,5 @@
 import { useState } from 'react'
-// import styles from '../styles/AnswerForm.module.css'
-import Button from '../components/Button'
+import Button from './Button'
 
 const AnswerForm = ({
   onNextLogo,
@@ -23,44 +22,49 @@ const AnswerForm = ({
   }
   return (
     <>
-      <div class='mt-1 relative rounded-md shadow-sm'>
+      <div className='mt-1 relative rounded-md shadow-sm w-4/5 my-1 mx-auto'>
         <input
           type='text'
-          className='focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md'
+          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full px-4 sm:text-sm border-gray-300 rounded-md'
           value={answer}
           onChange={ev => setAnswer(ev.target.value)}
           readOnly={hasGuessed}
         />
       </div>
-      <Button
-        disabled={hasGuessed || !answer}
-        onClick={onSubmit}
-        modifier='blue'
-      >
-        Submit
-      </Button>
-      <Button disabled={hasGuessed} onClick={clearAnswer} modifier='gray'>
-        Clear
-      </Button>
-      {hasMoreLogos || !hasGuessed ? (
+      <div className='mt-4 mb-2 flex justify-between w-52'>
         <Button
-          disabled={!hasMoreLogos}
-          onClick={() => {
-            onNextLogo()
-            clearAnswer()
-          }}
-          modifier='blue'
+          disabled={hasGuessed || !answer}
+          onClick={onSubmit}
+          modifier='green'
         >
-          Next Logo
+          Submit
         </Button>
-      ) : (
-        <Button modifier='blue' onClick={setGameFinal}>
-          See final stats!
+        <Button disabled={hasGuessed} onClick={clearAnswer} modifier='gray'>
+          Clear
         </Button>
-      )}
-      <Button modifier='yellow' onClick={startNewGame}>
-        Start new game
-      </Button>
+      </div>
+      <div className='my-1 flex flex-col justify-between w-52'>
+        {hasMoreLogos || !hasGuessed ? (
+          <Button
+            disabled={!hasMoreLogos}
+            onClick={() => {
+              onNextLogo()
+              clearAnswer()
+            }}
+            modifier='blue'
+            className="my-2"
+          >
+            Next Logo
+          </Button>
+        ) : (
+          <Button modifier='blue' onClick={setGameFinal} className="my-2">
+            See final stats!
+          </Button>
+        )}
+        <Button modifier='yellow' onClick={startNewGame} className="my-2">
+          Start new game
+        </Button>
+      </div>
     </>
   )
 }
