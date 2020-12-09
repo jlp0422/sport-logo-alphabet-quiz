@@ -7,7 +7,7 @@ const PreGame = ({
   onStartGame
 }) => {
   return (
-    <div className='flex flex-col justify-around p-10 text-center flex flex-col items-center justify-center rounded-2xl border-2 shadow-lg border-gray-400 bg-gray-100'>
+    <div className='flex flex-col justify-around p-10 text-center items-center rounded-2xl border-2 shadow-lg border-green-500 bg-gray-100 sm:w-50vw sm:h-50vh w-80vw h-60vh'>
       <h2 className='text-3xl text-center font-bold pb-2'>
         <label htmlFor='logo-selection'>LOGO PACK</label>
       </h2>

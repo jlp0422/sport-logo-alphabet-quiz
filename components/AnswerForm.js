@@ -20,18 +20,40 @@ const AnswerForm = ({
       : setIncorrectGuess
     setAnswer()
   }
+
+  const getNextStep = () => {
+    if (!hasMoreLogos && hasGuessed) {
+      return
+    }
+
+    if (!hasMoreLogos) {
+      return {
+        onClick: setGameFinal,
+        copy: 'End Game'
+      }
+    }
+
+    return {
+      onClick: () => {
+        onNextLogo()
+        clearAnswer()
+      },
+      copy: hasGuessed ? 'Next Logo' : 'Skip Logo'
+    }
+  }
+
+  const nextStepLogic = getNextStep()
+
   return (
     <>
-      <div className='mt-1 relative rounded-md shadow-sm w-4/5 my-1 mx-auto'>
+      <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 my-1 mx-auto mt-4'>
         <input
           type='text'
-          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full px-4 sm:text-sm border-gray-300 rounded-md'
+          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
           value={answer}
           onChange={ev => setAnswer(ev.target.value)}
           readOnly={hasGuessed}
         />
-      </div>
-      <div className='mt-4 mb-2 flex justify-between w-52'>
         <Button
           disabled={hasGuessed || !answer}
           onClick={onSubmit}
@@ -39,29 +61,22 @@ const AnswerForm = ({
         >
           Submit
         </Button>
-        <Button disabled={hasGuessed} onClick={clearAnswer} modifier='gray'>
-          Clear
-        </Button>
       </div>
-      <div className='my-1 flex flex-col justify-between w-52'>
+      <div className='mt-8 mb-2 flex flex-col'>
         {hasMoreLogos || !hasGuessed ? (
           <Button
-            disabled={!hasMoreLogos}
-            onClick={() => {
-              onNextLogo()
-              clearAnswer()
-            }}
+            onClick={nextStepLogic.onClick}
             modifier='blue'
-            className="my-2"
+            className='mb-4'
           >
-            Next Logo
+            {nextStepLogic.copy}
           </Button>
         ) : (
-          <Button modifier='blue' onClick={setGameFinal} className="my-2">
+          <Button modifier='blue' onClick={setGameFinal} className='mb-4'>
             See final stats!
           </Button>
         )}
-        <Button modifier='yellow' onClick={startNewGame} className="my-2">
+        <Button modifier='yellow' onClick={startNewGame}>
           Start new game
         </Button>
       </div>

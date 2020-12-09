@@ -4,6 +4,7 @@ import AnswerForm from '../components/AnswerForm'
 import GameOver from '../components/GameOver'
 import PreGame from '../components/PreGame'
 import InProgressGame from '../components/InProgressGame'
+import { getScoreForSportFromStorage, updateScoreInStorage } from '../helpers'
 import { MLB_LOGOS, NBA_LOGOS } from '../constants'
 
 const NOT_STARTED = 'NOT_STARTED'
@@ -37,6 +38,7 @@ const initialState = {
   activeLogo: {},
   remainingLogos: [],
   usedLogos: [],
+  logoPack: null,
   status: STATUSES.NOT_STARTED
 }
 
@@ -45,7 +47,8 @@ const reducer = (state, action) => {
     case 'SET_LOGOS':
       return {
         ...state,
-        remainingLogos: action.payload
+        remainingLogos: action.payload.logos,
+        logoPack: action.payload.logoPack
       }
     case 'CORRECT_GUESS':
       return {
@@ -93,11 +96,16 @@ function Home() {
       activeLogo: getRandomLogo(state.remainingLogos)
     })
 
-  const onSelectLogos = ev =>
+  const onSelectLogos = ev => {
+    const key = ev.target.value
     dispatch({
       type: 'SET_LOGOS',
-      payload: logosBySport[ev.target.value]
+      payload: {
+        logos: logosBySport[key],
+        logoPack: key
+      }
     })
+  }
 
   const onStartGame = () => {
     dispatch({ type: 'START_GAME' })
@@ -105,24 +113,26 @@ function Home() {
   }
 
   const getHighScore = () => {
-    // get from local storage
-    // for just played sport
-    return 7
+    const highScore = getScoreForSportFromStorage(state.logoPack)
+    return highScore
   }
 
   const setCorrectGuess = () => dispatch({ type: 'CORRECT_GUESS' })
   const setIncorrectGuess = () => dispatch({ type: 'INCORRECT_GUESS' })
   const restartGame = () => dispatch({ type: 'RESET_GAME' })
-  const setGameFinal = () => dispatch({ type: 'GAME_OVER' })
+  const setGameFinal = () => {
+    updateScoreInStorage(state)
+    dispatch({ type: 'GAME_OVER' })
+  }
 
   return (
-    <div className='mx-auto flex flex-col justify-center items-center min-h-screen'>
+    <div className='mx-auto flex flex-col justify-center items-center min-h-screen bg-green-200'>
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <main className='flex flex-col justify-center items-center flex-1 py-8'>
+      <main className='flex flex-col justify-center items-center flex-1 py:4 sm:py-4 w-90vw sm:w-80vw'>
         {state.status === STATUSES.NOT_STARTED && (
           <PreGame
             onSelectLogos={onSelectLogos}
@@ -136,7 +146,8 @@ function Home() {
           <GameOver
             correctGuesses={state.correctGuesses}
             restartGame={restartGame}
-            getHighScore={getHighScore()}
+            highScore={getHighScore()}
+            logoPack={state.logoPack}
           />
         )}
 
@@ -165,7 +176,7 @@ function Home() {
         )}
       </main>
 
-      <footer className='w-full h-16 flex justify-center items-center border-t border-solid border-gray-200'>
+      <footer className='w-full h-12 flex justify-center items-center text-gray-600 border-t border-solid border-green-500'>
         Built by Jeremy Philipson
       </footer>
     </div>
