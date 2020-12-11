@@ -8,7 +8,7 @@ const InProgressGame = ({
   activeLogo
 }) => {
   const [preGuessCopy, color] = isCorrectGuess
-    ? ['You guessed correct!', 'green']
+    ? ["That's correct!", 'green']
     : ["Nope, that's not correct!", 'red']
   const hasGuessed = isCorrectGuess || isIncorrectGuess
 

@@ -3,7 +3,7 @@ import Button from './Button'
 
 const AnswerForm = ({
   onNextLogo,
-  hasMoreLogos,
+  remainingLogos,
   logo,
   setCorrectGuess,
   setIncorrectGuess,
@@ -11,6 +11,7 @@ const AnswerForm = ({
   setGameFinal,
   startNewGame
 }) => {
+  const logosRemaining = remainingLogos.length
   const [answer, setAnswer] = useState('')
   const clearAnswer = () => setAnswer('')
   const onSubmit = () => {
@@ -22,11 +23,11 @@ const AnswerForm = ({
   }
 
   const getNextStep = () => {
-    if (!hasMoreLogos && hasGuessed) {
+    if (!logosRemaining && hasGuessed) {
       return
     }
 
-    if (!hasMoreLogos) {
+    if (!logosRemaining) {
       return {
         onClick: setGameFinal,
         copy: 'End Game'
@@ -38,7 +39,7 @@ const AnswerForm = ({
         onNextLogo()
         clearAnswer()
       },
-      copy: hasGuessed ? 'Next Logo' : 'Skip Logo'
+      copy: `${hasGuessed ? 'Next Logo' : 'Skip Logo'} (${logosRemaining} left)`
     }
   }
 
@@ -62,12 +63,12 @@ const AnswerForm = ({
           Submit
         </Button>
       </div>
-      <div className='mt-8 mb-2 flex flex-col'>
-        {hasMoreLogos || !hasGuessed ? (
+      <div className='mt-8 mb-2 flex flex-col lg:flex-row lg:w-4/5 lg:justify-evenly'>
+        {logosRemaining || !hasGuessed ? (
           <Button
             onClick={nextStepLogic.onClick}
             modifier='blue'
-            className='mb-4'
+            className='mb-4 lg:mb-0'
           >
             {nextStepLogic.copy}
           </Button>
