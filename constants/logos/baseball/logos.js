@@ -1,4 +1,5 @@
 const SPORT_MLB = { sport: 'mlb' }
+const SPORT_MILB = { sport: 'milb' }
 
 const bostonRedSox = {
   filename: 'boston_red_sox',
@@ -37,14 +38,12 @@ const oaklandAthletics = {
   ...SPORT_MLB
 }
 
-const MLB_TEAMS = [
+export const MLB_LOGOS = [
   bostonRedSox,
   clevelandIndians,
   losAngelesAngels,
   oaklandAthletics
 ]
-
-export default MLB_TEAMS
 
 /*
 A: braves, angels, athletics, dbacks, isotopes (MILB), aces (MILB), doubledays (MILB)

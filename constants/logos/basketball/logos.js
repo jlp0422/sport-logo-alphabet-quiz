@@ -1,4 +1,5 @@
 const SPORT_NBA = { sport: 'nba' }
+const SPORT_WNBA = { sport: 'wnba' }
 
 const brooklynNets = {
   filename: 'brooklyn_nets',
@@ -32,9 +33,12 @@ const losAngelesLakers = {
   ...SPORT_NBA
 }
 
-const NBA_TEAMS = [brooklynNets, clevelandCavaliers, utahJazz, losAngelesLakers]
-
-export default NBA_TEAMS
+export const NBA_LOGOS = [
+  brooklynNets,
+  clevelandCavaliers,
+  utahJazz,
+  losAngelesLakers
+]
 
 /*
 A: deream (WNBA)

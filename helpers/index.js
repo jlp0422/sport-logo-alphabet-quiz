@@ -33,3 +33,26 @@ export const getScoreForSportFromStorage = logoPack => {
   const scores = getScoresFromStorage()
   return scores[logoPack] || 0
 }
+
+export const getLogoCopy = logo => `${logo.letters[0]} is for ${logo.title}.`
+
+export const getRandomLogo = logos => {
+  if (!logos.length) {
+    return {}
+  }
+  const randomIndex = Math.floor(Math.random() * logos.length)
+  return logos[randomIndex]
+}
+
+export const getCurrentGameStatus = (currentStatus, allStatuses) => ({
+  isGameNotStarted: currentStatus === allStatuses.NOT_STARTED,
+  isGameOver: currentStatus === allStatuses.GAME_OVER,
+  isCorrectGuess: currentStatus === allStatuses.CORRECT_GUESS,
+  isIncorrectGuess: currentStatus === allStatuses.INCORRECT_GUESS,
+  isWaitingForGuess: currentStatus === allStatuses.WAITING_FOR_GUESS
+})
+
+export const getStatCopy = logoPack => {
+  const copy = logoPack === 'ALL' ? 'All' : logoPack
+  return `${copy} Logos`
+}
