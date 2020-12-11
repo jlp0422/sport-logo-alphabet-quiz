@@ -9,7 +9,6 @@ const AnswerForm = ({
   setIncorrectGuess,
   hasGuessed,
   setGameFinal,
-  startNewGame
 }) => {
   const logosRemaining = remainingLogos.length
   const [answer, setAnswer] = useState('')
@@ -68,17 +67,17 @@ const AnswerForm = ({
           <Button
             onClick={nextStepLogic.onClick}
             modifier='blue'
-            className='mb-4 lg:mb-0'
+            className='mb-8 lg:mb-0 lg:order-2'
           >
             {nextStepLogic.copy}
           </Button>
         ) : (
-          <Button modifier='blue' onClick={setGameFinal} className='mb-4'>
+          <Button modifier='blue' onClick={setGameFinal} className='mb-8 lg:mb-0'>
             See final stats!
           </Button>
         )}
-        <Button modifier='yellow' onClick={startNewGame}>
-          Start new game
+        <Button modifier='yellow' onClick={setGameFinal} className="lg:order-1">
+          End game
         </Button>
       </div>
     </>

@@ -1,12 +1,13 @@
 import { getScoreForSportFromStorage, getStatCopy } from '../helpers'
 import Button from './Button'
-import DisplayCard from './DisplayCard'
+import DisplayCard from './shared/DisplayCard'
+import CardHeader from './shared/CardHeader'
 
 const GameOver = ({ correctGuesses, restartGame, logoPack }) => {
   const highScore = getScoreForSportFromStorage(logoPack)
   return (
     <DisplayCard borderColor='gray'>
-      <h2 className='text-3xl text-center font-bold'>STATS</h2>
+      <CardHeader element='h2'>Final Stats</CardHeader>
       <div>
         <h4 className='text-xl text-center py-2 mt-1'>
           Correct Guesses: {correctGuesses}

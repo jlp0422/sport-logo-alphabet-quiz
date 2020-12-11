@@ -100,7 +100,6 @@ function Home() {
               setIncorrectGuess={setIncorrectGuess}
               hasGuessed={HAS_GUESSED_STATUSES.includes(state.status)}
               setGameFinal={setGameFinal}
-              startNewGame={restartGame}
             />
           </>
         )}

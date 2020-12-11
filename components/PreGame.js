@@ -1,5 +1,6 @@
 import Button from './Button'
-import DisplayCard from './DisplayCard'
+import DisplayCard from './shared/DisplayCard'
+import CardHeader from './shared/CardHeader'
 
 const PreGame = ({
   onSelectLogos,
@@ -9,9 +10,9 @@ const PreGame = ({
 }) => {
   return (
     <DisplayCard borderColor='green'>
-      <h2 className='text-3xl text-center font-bold pb-2'>
-        <label htmlFor='logo-selection'>LOGO PACK</label>
-      </h2>
+      <CardHeader element='h2' className='pb-2'>
+        <label htmlFor='logo-selection'>Select your Logo&nbsp;Pack</label>
+      </CardHeader>
       <select
         onChange={onSelectLogos}
         id='logo-selection'
