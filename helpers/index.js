@@ -34,8 +34,6 @@ export const getScoreForSportFromStorage = logoPack => {
   return scores[logoPack] || 0
 }
 
-export const getLogoCopy = logo => `${logo.letters[0]} is for ${logo.title}.`
-
 export const getRandomLogo = logos => {
   if (!logos.length) {
     return {}

@@ -2,8 +2,9 @@ import Head from 'next/head'
 import { useReducer } from 'react'
 import AnswerForm from '../components/AnswerForm'
 import GameOver from '../components/GameOver'
-import InProgressGame from '../components/InProgressGame'
+import LogoDisplay from '../components/shared/LogoDisplay'
 import PreGame from '../components/PreGame'
+import GuessResult from '../components/shared/GuessResult'
 import * as actions from '../constants/actions'
 import { STATUSES, HAS_GUESSED_STATUSES } from '../constants/gameProgress'
 import { LOGOS_BY_TYPE } from '../constants/logos'
@@ -18,10 +19,11 @@ import {
 function Home() {
   const { reducer, initialState } = createReducerAndState(STATUSES)
   const [state, dispatch] = useReducer(reducer, initialState)
+  const { remainingLogos, activeLogo, correctGuesses, logoPack, status } = state
   const setActiveLogo = () =>
     dispatch({
       ...actions.SET_ACTIVE_LOGO,
-      activeLogo: getRandomLogo(state.remainingLogos)
+      activeLogo: getRandomLogo(remainingLogos)
     })
 
   const onSelectLogos = ev => {
@@ -54,7 +56,7 @@ function Home() {
     isCorrectGuess,
     isIncorrectGuess,
     isWaitingForGuess
-  } = getCurrentGameStatus(state.status, STATUSES)
+  } = getCurrentGameStatus(status, STATUSES)
   const isGameInProgress =
     isCorrectGuess || isIncorrectGuess || isWaitingForGuess
 
@@ -71,34 +73,36 @@ function Home() {
             onSelectLogos={onSelectLogos}
             sportLogos={Object.keys(LOGOS_BY_TYPE)}
             onStartGame={onStartGame}
-            hasSelectedSport={state.remainingLogos.length}
+            hasSelectedSport={remainingLogos.length}
           />
         )}
 
         {isGameOver && (
           <GameOver
-            correctGuesses={state.correctGuesses}
+            correctGuesses={correctGuesses}
             restartGame={restartGame}
-            logoPack={state.logoPack}
+            logoPack={logoPack}
           />
         )}
 
         {isGameInProgress && (
           <>
-            <InProgressGame
+            <GuessResult
               isCorrectGuess={isCorrectGuess}
               isIncorrectGuess={isIncorrectGuess}
+              activeLogo={activeLogo}
+            />
+            <LogoDisplay
               isWaitingForGuess={isWaitingForGuess}
-              postGuessCopy={getLogoCopy(state.activeLogo)}
-              activeLogo={state.activeLogo}
+              activeLogo={activeLogo}
             />
             <AnswerForm
               onNextLogo={setActiveLogo}
-              logo={state.activeLogo}
-              remainingLogos={state.remainingLogos}
+              logo={activeLogo}
+              remainingLogos={remainingLogos}
               setCorrectGuess={setCorrectGuess}
               setIncorrectGuess={setIncorrectGuess}
-              hasGuessed={HAS_GUESSED_STATUSES.includes(state.status)}
+              hasGuessed={HAS_GUESSED_STATUSES.includes(status)}
               setGameFinal={setGameFinal}
             />
           </>

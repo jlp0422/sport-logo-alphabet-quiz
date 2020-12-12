@@ -1,3 +1,4 @@
+import next from 'next'
 import { useState } from 'react'
 import Button from './Button'
 
@@ -8,9 +9,10 @@ const AnswerForm = ({
   setCorrectGuess,
   setIncorrectGuess,
   hasGuessed,
-  setGameFinal,
+  setGameFinal
 }) => {
-  const logosRemaining = remainingLogos.length
+  const hasLogosRemaining = remainingLogos.length > 0
+  const numLogosRemaining = remainingLogos.length
   const [answer, setAnswer] = useState('')
   const clearAnswer = () => setAnswer('')
   const onSubmit = () => {
@@ -21,62 +23,54 @@ const AnswerForm = ({
     setAnswer()
   }
 
-  const getNextStep = () => {
-    if (!logosRemaining && hasGuessed) {
-      return
-    }
-
-    if (!logosRemaining) {
-      return {
-        onClick: setGameFinal,
-        copy: 'End Game'
-      }
-    }
-
-    return {
-      onClick: () => {
-        onNextLogo()
-        clearAnswer()
-      },
-      copy: `${hasGuessed ? 'Next Logo' : 'Skip Logo'} (${logosRemaining} left)`
-    }
+  const nextAndClear = () => {
+    onNextLogo()
+    clearAnswer()
   }
 
-  const nextStepLogic = getNextStep()
+  const getNextLogic = () => {
+    if (hasGuessed && !hasLogosRemaining) {
+      return [setGameFinal, 'green', 'See final stats']
+    }
+    if (hasGuessed) {
+      return [nextAndClear, 'blue', 'Next logo']
+    }
+    return [onSubmit, 'green', 'Submit']
+  }
+
+  const [onSubmitOrNext, color, copy] = getNextLogic()
 
   return (
     <>
       <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 my-1 mx-auto mt-4'>
         <input
           type='text'
-          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
+          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full sm:w-4/5 px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
           value={answer}
           onChange={ev => setAnswer(ev.target.value)}
           readOnly={hasGuessed}
         />
-        <Button
-          disabled={hasGuessed || !answer}
-          onClick={onSubmit}
-          modifier='green'
-        >
-          Submit
+        <Button disabled={!answer} onClick={onSubmitOrNext} modifier={color} className="flex-shrink-0 flex-grow">
+          {copy}
         </Button>
       </div>
       <div className='mt-8 mb-2 flex flex-col lg:flex-row lg:w-4/5 lg:justify-evenly'>
-        {logosRemaining || !hasGuessed ? (
+        {hasLogosRemaining && (
           <Button
-            onClick={nextStepLogic.onClick}
+            onClick={nextAndClear}
             modifier='blue'
-            className='mb-8 lg:mb-0 lg:order-2'
+            disabled={hasGuessed}
+            className='mb-4 lg:mb-0 lg:order-1'
           >
-            {nextStepLogic.copy}
-          </Button>
-        ) : (
-          <Button modifier='blue' onClick={setGameFinal} className='mb-8 lg:mb-0'>
-            See final stats!
+            {`Skip Logo (${numLogosRemaining} left)`}
           </Button>
         )}
-        <Button modifier='yellow' onClick={setGameFinal} className="lg:order-1">
+        <Button
+          modifier='yellow'
+          disabled={hasGuessed && !hasLogosRemaining}
+          onClick={setGameFinal}
+          className='lg:order-0'
+        >
           End game
         </Button>
       </div>
