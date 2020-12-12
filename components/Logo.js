@@ -8,7 +8,7 @@ const Logo = ({ logo, isWaitingForGuess }) => {
       title={isWaitingForGuess ? 'Guess the logo' : logo.title}
       width='225'
       height='225'
-      className="object-contain"
+      className='object-contain'
     />
   )
 }

@@ -2,18 +2,16 @@ import Head from 'next/head'
 import { useReducer } from 'react'
 import AnswerForm from '../components/AnswerForm'
 import GameOver from '../components/GameOver'
-import LogoDisplay from '../components/shared/LogoDisplay'
 import PreGame from '../components/PreGame'
 import GuessResult from '../components/shared/GuessResult'
+import LogoDisplay from '../components/shared/LogoDisplay'
 import * as actions from '../constants/actions'
-import { STATUSES, HAS_GUESSED_STATUSES } from '../constants/gameProgress'
+import { HAS_GUESSED_STATUSES, STATUSES } from '../constants/gameProgress'
 import { LOGOS_BY_TYPE } from '../constants/logos'
 import createReducerAndState from '../constants/reducer'
 import {
-  getLogoCopy,
-  getRandomLogo,
-  updateScoreInStorage,
-  getCurrentGameStatus
+  getCurrentGameStatus, getRandomLogo,
+  updateScoreInStorage
 } from '../helpers'
 
 function Home() {

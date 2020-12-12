@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import Button from './Button'
 
 const AnswerForm = ({
@@ -54,7 +54,12 @@ const AnswerForm = ({
           onChange={ev => setAnswer(ev.target.value)}
           readOnly={hasGuessed}
         />
-        <Button disabled={!answer} onClick={onSubmitOrNext} modifier={color} className="flex-shrink-0 flex-grow">
+        <Button
+          disabled={!answer}
+          onClick={onSubmitOrNext}
+          modifier={color}
+          className='flex-shrink-0 flex-grow'
+        >
           {copy}
         </Button>
       </div>

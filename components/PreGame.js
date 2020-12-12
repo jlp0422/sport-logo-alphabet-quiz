@@ -1,6 +1,6 @@
 import Button from './Button'
-import DisplayCard from './shared/DisplayCard'
 import CardHeader from './shared/CardHeader'
+import DisplayCard from './shared/DisplayCard'
 
 const PreGame = ({
   onSelectLogos,
