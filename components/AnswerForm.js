@@ -1,5 +1,4 @@
-import next from 'next'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Button from './Button'
 
 const AnswerForm = ({
@@ -11,10 +10,14 @@ const AnswerForm = ({
   hasGuessed,
   setGameFinal
 }) => {
+  const inputRef = useRef(null)
   const hasLogosRemaining = remainingLogos.length > 0
   const numLogosRemaining = remainingLogos.length
   const [answer, setAnswer] = useState('')
-  const clearAnswer = () => setAnswer('')
+  const clearAnswer = () => {
+    setAnswer('')
+    inputRef.current.focus()
+  }
   const onSubmit = () => {
     const finalAnswer = answer.trim().replace(/\./g, '').toLowerCase()
     const setAnswer = logo.allowedAnswers.includes(finalAnswer)
@@ -44,6 +47,7 @@ const AnswerForm = ({
     <>
       <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 my-1 mx-auto mt-4'>
         <input
+          ref={inputRef}
           type='text'
           className='focus:ring-indigo-200 focus:border-indigo-200 block w-full sm:w-4/5 px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
           value={answer}
