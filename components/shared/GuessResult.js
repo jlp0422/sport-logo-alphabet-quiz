@@ -15,9 +15,14 @@ const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
     />
   )
 
+  const textColorMap = {
+    green: 'text-green-600',
+    red: 'text-red-600'
+  }
+
   return (
     <h2
-      className={`text-xl sm:text-2xl text-center py-2 text-${color}-600 font-bold`}
+      className={`text-xl sm:text-2xl text-center py-2 font-bold ${textColorMap[color]}`}
     >
       {hasGuessed ? copy : <span>&nbsp;</span>}
     </h2>
