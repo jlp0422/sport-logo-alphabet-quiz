@@ -6,6 +6,8 @@ const Logo = ({ logo, isWaitingForGuess }) => {
       src={`/logos/${logo.filename}.png`}
       alt={isWaitingForGuess ? 'Guess the logo' : logo.title}
       title={isWaitingForGuess ? 'Guess the logo' : logo.title}
+      priority
+      loading="eager"
       width='225'
       height='225'
       className='object-contain'
