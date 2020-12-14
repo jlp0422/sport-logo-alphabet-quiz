@@ -11,6 +11,9 @@ module.exports = {
       height: {
         '50vh': '50vh',
         '60vh': '60vh'
+      },
+      screens: {
+        xsm: '420px'
       }
     }
   },
