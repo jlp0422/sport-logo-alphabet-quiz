@@ -37,7 +37,7 @@ const bostonRedSox = createMlbTeam({
 const losAngelesAngels = createMlbTeam({
   title: 'Los Angeles Angels',
   letters: ['A'],
-  allowedAnswers: [
+  answers: [
     'la angels',
     'angels',
     'los angeles angels',
@@ -48,7 +48,7 @@ const losAngelesAngels = createMlbTeam({
 const oaklandAthletics = createMlbTeam({
   title: 'Oakland Athletics',
   letters: ['A'],
-  allowedAnswers: [
+  answers: [
     'oakland',
     "a's",
     'oakland athletics',
