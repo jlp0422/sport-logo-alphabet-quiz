@@ -1,12 +1,12 @@
 const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
   const letterForLogo = activeLogo.letters[0]
   const teamName = activeLogo.title.split(' ').join('&nbsp;')
+  const hasGuessed = isCorrectGuess || isIncorrectGuess
 
   const [preGuessCopy, color] = isCorrectGuess
     ? ["That's correct!", 'green']
     : ["Nope, that's not correct!", 'red']
 
-  const hasGuessed = isCorrectGuess || isIncorrectGuess
   const copy = (
     <span
       dangerouslySetInnerHTML={{

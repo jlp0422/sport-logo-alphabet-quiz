@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react'
 import Logo from '../Logo'
-// import dynamic from 'next/dynamic'
-
-// const LogoDynamic = dynamic(import('../Logo'), {
-//   ssr: false
-// })
 
 const LogoDisplay = ({ activeLogo, ...props }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -22,7 +17,7 @@ const LogoDisplay = ({ activeLogo, ...props }) => {
             height: 230
           }}
         >
-          Grabbing next logo...
+          Grabbing the next logo...
         </h2>
       )}
       <div className={isLoading ? 'hidden' : 'block'}>
