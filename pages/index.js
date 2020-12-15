@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 import AnswerForm from '../components/AnswerForm'
 import GameOver from '../components/GameOver'
 import PreGame from '../components/PreGame'
@@ -10,13 +10,16 @@ import { HAS_GUESSED_STATUSES, STATUSES } from '../constants/gameProgress'
 import { LOGOS_BY_TYPE } from '../constants/logos'
 import createReducerAndState from '../constants/reducer'
 import {
-  getCurrentGameStatus, getRandomLogo,
+  createRgb,
+  getCurrentGameStatus,
+  getRandomLogo,
   updateScoreInStorage
 } from '../helpers'
 
 function Home() {
   const { reducer, initialState } = createReducerAndState(STATUSES)
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [palette, setPalette] = useState([[], [], []])
   const { remainingLogos, activeLogo, correctGuesses, logoPack, status } = state
   const setActiveLogo = () =>
     dispatch({
@@ -58,8 +61,13 @@ function Home() {
   const isGameInProgress =
     isCorrectGuess || isIncorrectGuess || isWaitingForGuess
 
+  const [primaryColor, secondaryColor, tertiaryColor] = palette.map(createRgb)
+
   return (
-    <div className='mx-auto flex flex-col justify-center items-center min-h-screen bg-green-200'>
+    <div
+      className='mx-auto flex flex-col justify-center items-center min-h-screen bg-green-900'
+      style={{ backgroundColor: primaryColor }}
+    >
       <Head>
         <title>Sport Logo Alphabet Quiz</title>
         {/* <link rel='icon' href='/favicon.ico' /> */}
@@ -93,6 +101,7 @@ function Home() {
             <LogoDisplay
               isWaitingForGuess={isWaitingForGuess}
               activeLogo={activeLogo}
+              setPalette={setPalette}
             />
             <AnswerForm
               onNextLogo={setActiveLogo}
@@ -107,7 +116,10 @@ function Home() {
         )}
       </main>
 
-      <footer className='w-full h-12 flex justify-center items-center text-gray-600 border-t border-solid border-green-500'>
+      <footer
+        className='w-full h-12 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 bg-green-900'
+        style={{ backgroundColor: secondaryColor, color: tertiaryColor }}
+      >
         Built by Jeremy Philipson
       </footer>
     </div>
