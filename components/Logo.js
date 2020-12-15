@@ -1,16 +1,29 @@
+import ColorThief from 'colorthief'
 import Image from 'next/image'
 
-const Logo = ({ logo, isWaitingForGuess }) => {
+const Logo = ({
+  logo,
+  isWaitingForGuess,
+  setPalette,
+  setIsLoading
+}) => {
+  const ct = new ColorThief()
+  const imageInfo = isWaitingForGuess ? 'Guess the logo' : logo.title
+
   return (
     <Image
-      src={`/logos/${logo.filename}.png`}
-      alt={isWaitingForGuess ? 'Guess the logo' : logo.title}
-      title={isWaitingForGuess ? 'Guess the logo' : logo.title}
-      priority
-      loading="eager"
+      src={`/logos/${logo.sport}/${logo.filename}.png`}
+      alt={imageInfo}
+      title={imageInfo}
+      loading='eager'
       width='225'
       height='225'
-      className='object-contain'
+      className={`object-contain`}
+      onLoadStart={console.log}
+      onLoad={img => {
+        setIsLoading(false)
+        setPalette(ct.getPalette(img.target, 3))
+      }}
     />
   )
 }

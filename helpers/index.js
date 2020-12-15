@@ -54,3 +54,5 @@ export const getStatCopy = logoPack => {
   const copy = logoPack === 'ALL' ? 'All' : logoPack
   return `${copy} Logos`
 }
+
+export const createRgb = rgbArr => `rgb(${rgbArr})`

@@ -18,7 +18,7 @@ const PreGame = ({
         id='logo-selection'
         name='logo-selection'
         defaultValue='0'
-        className='form-select mt-1 block w-full rounded-md'
+        className='focus:border-green-700 focus:ring-green-700 form-select mt-1 block w-full rounded-md'
       >
         <option value='0' disabled>
           Select...
