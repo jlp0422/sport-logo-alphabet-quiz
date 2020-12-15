@@ -41,15 +41,15 @@ const AnswerForm = ({
     return [onSubmit, 'green', 'Submit']
   }
 
-  const [onSubmitOrNext, color, copy] = getNextLogic()
+  const [onSubmitOrNext, modifier, copy] = getNextLogic()
 
   return (
     <>
-      <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 my-1 mx-auto mt-4'>
+      <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 max-w-2xl my-1 mx-auto mt-4'>
         <input
           ref={inputRef}
           type='text'
-          placeholder="Whose logo is this?"
+          placeholder='Whose logo is this?'
           className='focus:ring-indigo-200 focus:border-indigo-200 block w-full sm:w-4/5 px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
           value={answer}
           onChange={ev => setAnswer(ev.target.value)}
@@ -58,7 +58,7 @@ const AnswerForm = ({
         <Button
           disabled={!answer}
           onClick={onSubmitOrNext}
-          modifier={color}
+          modifier={modifier}
           className='flex-shrink-0 flex-grow'
         >
           {copy}

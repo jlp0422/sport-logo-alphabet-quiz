@@ -1,28 +1,27 @@
 import ColorThief from 'colorthief'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
-const Logo = ({ logo, isWaitingForGuess, setPalette }) => {
+const Logo = ({
+  logo,
+  isWaitingForGuess,
+  setPalette,
+  setIsLoading
+}) => {
   const ct = new ColorThief()
-  const [isLoaded, setIsLoaded] = useState(false)
-  useEffect(() => {
-    setIsLoaded(false)
-  }, [logo])
-
-  console.log({ isLoaded })
+  const imageInfo = isWaitingForGuess ? 'Guess the logo' : logo.title
 
   return (
     <Image
       src={`/logos/${logo.sport}/${logo.filename}.png`}
-      alt={isWaitingForGuess ? 'Guess the logo' : logo.title}
-      title={isWaitingForGuess ? 'Guess the logo' : logo.title}
-      priority
+      alt={imageInfo}
+      title={imageInfo}
       loading='eager'
       width='225'
       height='225'
-      className='object-contain'
+      className={`object-contain`}
+      onLoadStart={console.log}
       onLoad={img => {
-        setIsLoaded(true)
+        setIsLoading(false)
         setPalette(ct.getPalette(img.target, 3))
       }}
     />
