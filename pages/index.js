@@ -119,7 +119,11 @@ function Home() {
 
       <footer
         className='w-full h-12 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 bg-green-900'
-        style={{ backgroundColor: secondaryColor, color: tertiaryColor }}
+        style={{
+          backgroundColor: secondaryColor,
+          color: primaryColor,
+          borderColor: tertiaryColor
+        }}
       >
         Built by Jeremy Philipson
       </footer>

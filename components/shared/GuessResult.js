@@ -17,7 +17,7 @@ const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
 
   return (
     <h2
-      className={`text-md xs:text-lg sm:text-2xl text-center font-bold text-white rounded-lg my-2 sm:mt-0 py-2 px-4 border-2 border-white border-solid ${bgColorMap[color]}`}
+      className={`text-md xs:text-lg sm:text-3xl text-center font-bold text-white rounded-lg my-2 sm:mt-0 py-2 px-4 border-2 border-white border-solid ${bgColorMap[color]}`}
     >
       <span
         dangerouslySetInnerHTML={{

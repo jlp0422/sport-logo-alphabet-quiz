@@ -31,7 +31,7 @@ const Loading = ({ loadingDotColor }) => {
   )
   return (
     <motion.div
-      className='flex justify-evenly xs:justify-around items-center w-full h-full min-h-180 xs:w-225 xs:h-280'
+      className='flex justify-evenly xs:justify-around items-center w-full h-full min-h-190 xs:w-225 xs:h-280'
       variants={loadingContainerVariants}
       initial='start'
       animate='end'
