@@ -4,7 +4,7 @@ import { NFL_LOGOS } from './football/logos'
 
 export const LOGOS_BY_TYPE = {
   ALL: [...MLB_LOGOS, ...NBA_LOGOS, ...NFL_LOGOS],
-  BASEBALL: [...MLB_LOGOS, ...MILB_LOGOS],
+  Baseball: [...MLB_LOGOS, ...MILB_LOGOS],
   MLB: MLB_LOGOS,
   MILB: MILB_LOGOS,
   NBA: NBA_LOGOS,

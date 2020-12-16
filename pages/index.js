@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import { useReducer, useState } from 'react'
 import AnswerForm from '../components/AnswerForm'
 import GameOver from '../components/GameOver'
 import PreGame from '../components/PreGame'
 import GuessResult from '../components/shared/GuessResult'
+import Layout from '../components/shared/Layout'
 import LogoDisplay from '../components/shared/LogoDisplay'
 import * as actions from '../constants/actions'
 import { HAS_GUESSED_STATUSES, STATUSES } from '../constants/gameProgress'
@@ -64,16 +64,12 @@ function Home() {
   const [primaryColor, secondaryColor, tertiaryColor] = palette.map(createRgb)
 
   return (
-    <div
-      className='mx-auto flex flex-col justify-center items-center min-h-screen bg-green-900'
-      style={{ backgroundColor: primaryColor }}
+    <Layout
+      primaryColor={primaryColor}
+      secondaryColor={secondaryColor}
+      tertiaryColor={tertiaryColor}
     >
-      <Head>
-        <title>Sport Logo Alphabet Quiz</title>
-        {/* <link rel='icon' href='/favicon.ico' /> */}
-      </Head>
-
-      <main className='flex flex-col justify-evenly xs:justify-center items-center flex-1 py:4 sm:py-4 w-90vw sm:w-80vw'>
+      <>
         {isGameNotStarted && (
           <PreGame
             onSelectLogos={onSelectLogos}
@@ -115,19 +111,8 @@ function Home() {
             />
           </>
         )}
-      </main>
-
-      <footer
-        className='w-full h-12 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 bg-green-900'
-        style={{
-          backgroundColor: secondaryColor,
-          color: primaryColor,
-          borderColor: tertiaryColor
-        }}
-      >
-        Built by Jeremy Philipson
-      </footer>
-    </div>
+      </>
+    </Layout>
   )
 }
 

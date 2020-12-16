@@ -1,5 +1,6 @@
+import Link from 'next/link'
 import { getScoreForSportFromStorage, getStatCopy } from '../helpers'
-import Button from './Button'
+import Button, { ButtonWithRef } from './shared/Button'
 import CardHeader from './shared/CardHeader'
 import DisplayCard from './shared/DisplayCard'
 
@@ -19,6 +20,9 @@ const GameOver = ({ correctGuesses, restartGame, logoPack }) => {
       <Button modifier='green' onClick={restartGame}>
         Start new game!
       </Button>
+      <Link href='/high-scores' passHref>
+        <ButtonWithRef modifier='blue'>See high scores</ButtonWithRef>
+      </Link>
     </DisplayCard>
   )
 }

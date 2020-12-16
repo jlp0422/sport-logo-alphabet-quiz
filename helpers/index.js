@@ -1,6 +1,10 @@
 const LOCAL_STORAGE_KEY = 'SPORT_LOGO_ALPHABET_HIGH_SCORE'
 
 export const getScoresFromStorage = () => {
+  if (!window) {
+    return {}
+  }
+
   const rawStorage = window.localStorage.getItem(LOCAL_STORAGE_KEY) || '{}'
   let parsedStorage
 

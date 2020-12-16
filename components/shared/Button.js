@@ -1,4 +1,21 @@
-const Button = ({ children, onClick, disabled, modifier, className }) => {
+import React from 'react'
+
+export const ButtonWithRef = React.forwardRef(
+  ({ onClick, href, ...props }, ref) => (
+    <a href={href} onClick={onClick} ref={ref}>
+      <Button {...props} />
+    </a>
+  )
+)
+
+const Button = ({
+  children,
+  onClick,
+  disabled,
+  modifier,
+  className,
+  isButton = true
+}) => {
   const modifierToColors = {
     green: `bg-green-500 focus:ring-green-400 ${
       disabled ? '' : 'hover:bg-green-700'
@@ -11,11 +28,11 @@ const Button = ({ children, onClick, disabled, modifier, className }) => {
     }`
   }
   const colors = modifierToColors[modifier]
+  const buttonProps = isButton ? { onClick, disabled } : {}
   return (
     <button
       className={`py-2 px-4 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75 disabled:opacity-75 ${className} ${colors}`}
-      onClick={onClick}
-      disabled={disabled}
+      {...buttonProps}
     >
       {children}
     </button>
