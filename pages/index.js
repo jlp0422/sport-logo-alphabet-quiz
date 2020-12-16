@@ -102,6 +102,7 @@ function Home() {
               isWaitingForGuess={isWaitingForGuess}
               activeLogo={activeLogo}
               setPalette={setPalette}
+              loadingDotColor={secondaryColor}
             />
             <AnswerForm
               onNextLogo={setActiveLogo}

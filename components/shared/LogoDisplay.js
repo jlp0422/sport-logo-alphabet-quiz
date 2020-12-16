@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react'
 import Logo from '../Logo'
+import Loading from '../shared/Loading'
 
-const LogoDisplay = ({ activeLogo, ...props }) => {
+const LogoDisplay = ({ activeLogo, loadingDotColor, ...props }) => {
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     setIsLoading(true)
   }, [activeLogo])
 
+  const hiddenWhenLoading = isLoading ? 'hidden' : 'block'
+
   return (
-    <div className='m-2 p-4 bg-white rounded-md border shadow w-1/2 xs:w-max'>
-      {isLoading && (
-        <h2 className='flex justify-center items-center xs:font-bold text-lg xs:text-2xl text-center w-full h-full xs:w-225 xs:h-230'>
-          Grabbing the next logo...
-        </h2>
-      )}
-      <div className={isLoading ? 'hidden' : 'block'}>
-        <Logo {...props} logo={activeLogo} setIsLoading={setIsLoading} />
+    <>
+      {isLoading && <Loading loadingDotColor={loadingDotColor} />}
+      <div
+        className={`m-2 p-4 bg-white rounded-md border shadow w-1/2 xs:w-max ${hiddenWhenLoading}`}
+      >
+        <div className={hiddenWhenLoading}>
+          <Logo {...props} logo={activeLogo} setIsLoading={setIsLoading} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
