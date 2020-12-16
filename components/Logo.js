@@ -19,7 +19,6 @@ const Logo = ({
       width='225'
       height='225'
       className={`object-contain`}
-      onLoadStart={console.log}
       onLoad={img => {
         setIsLoading(false)
         setPalette(ct.getPalette(img.target, 3))

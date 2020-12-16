@@ -6,14 +6,16 @@ module.exports = {
       width: {
         '50vw': '50vw',
         '80vw': '80vw',
-        '90vw': '90vw'
+        '90vw': '90vw',
+        '225': '225px',
       },
       height: {
         '50vh': '50vh',
-        '60vh': '60vh'
+        '60vh': '60vh',
+        '230': '230px'
       },
       screens: {
-        xsm: '420px'
+        xs: '420px'
       }
     }
   },
