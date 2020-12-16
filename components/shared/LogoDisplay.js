@@ -4,11 +4,11 @@ import Loading from '../shared/Loading'
 
 const LogoDisplay = ({ activeLogo, loadingDotColor, ...props }) => {
   const [isLoading, setIsLoading] = useState(true)
+  const hiddenWhenLoading = isLoading ? 'hidden' : 'block'
+
   useEffect(() => {
     setIsLoading(true)
   }, [activeLogo])
-
-  const hiddenWhenLoading = isLoading ? 'hidden' : 'block'
 
   return (
     <>

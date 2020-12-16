@@ -73,7 +73,7 @@ function Home() {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
 
-      <main className='flex flex-col justify-center items-center flex-1 py:4 sm:py-4 w-90vw sm:w-80vw'>
+      <main className='flex flex-col justify-evenly xs:justify-center items-center flex-1 py:4 sm:py-4 w-90vw sm:w-80vw'>
         {isGameNotStarted && (
           <PreGame
             onSelectLogos={onSelectLogos}
