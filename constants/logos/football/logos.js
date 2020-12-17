@@ -1,47 +1,72 @@
-const SPORT_NFL = { sport: 'nfl' }
+import { createNflTeam } from '../helpers'
 
-const chicagoBears = {
-  filename: 'chicago_bears',
+const chicagoBears = createNflTeam({
   title: 'Chicago Bears',
   letters: ['C'],
-  allowedAnswers: ['bears', 'chicago', 'chicago bears', 'da bears'],
-  ...SPORT_NFL
-}
+  answers: ['bears', 'chicago', 'chicago bears', 'da bears']
+})
 
-const denverBroncos = {
-  filename: 'denver_broncos',
+const cincinnatiBengals = createNflTeam({
+  title: 'Cincinnati Bengals',
+  letters: ['C'],
+  answers: ['cincinnati', 'bengals', 'cincinnati bengals']
+})
+
+const baltimoreRavens = createNflTeam({
+  title: 'Baltimore Ravens',
+  letters: ['B'],
+  answers: ['baltimore', 'ravens', 'baltimore ravens']
+})
+
+const denverBroncos = createNflTeam({
   title: 'Denver Broncos',
   letters: ['D'],
-  allowedAnswers: ['denver', 'broncos', 'denver broncos'],
-  ...SPORT_NFL
-}
+  answers: ['denver', 'broncos', 'denver broncos']
+})
 
-const greenBayPackers = {
-  filename: 'green_bay_packers',
+const greenBayPackers = createNflTeam({
   title: 'Green Bay Packers',
   letters: ['G'],
-  allowedAnswers: ['packers', 'green bay', 'green bay packers'],
-  ...SPORT_NFL
-}
+  answers: ['packers', 'green bay', 'green bay packers']
+})
 
-const tennesseeTitans = {
-  filename: 'tennessee_titans',
+const stLouisRams = createNflTeam({
+  title: 'St Louis Rams',
+  letters: ['R'],
+  answers: ['rams', 'st louis', 'st louis rams']
+})
+
+const tennesseeTitans = createNflTeam({
   title: 'Tennessee Titans',
   letters: ['T'],
-  allowedAnswers: ['titans', 'tennessee', 'tennessee titans'],
-  ...SPORT_NFL
-}
+  answers: ['titans', 'tennessee', 'tennessee titans']
+})
 
-export const NFL_LOGOS = [chicagoBears, denverBroncos, greenBayPackers, tennesseeTitans]
+const washingtonFootballTeam = createNflTeam({
+  title: 'Washington Football Team',
+  letters: ['W'],
+  answers: ['washington', 'football team', 'washington football team']
+})
+
+export const NFL_LOGOS = [
+  chicagoBears,
+  denverBroncos,
+  greenBayPackers,
+  tennesseeTitans,
+  cincinnatiBengals,
+  baltimoreRavens,
+  stLouisRams,
+  washingtonFootballTeam,
+]
 
 /*
 A: AFC
-B: bengals, ravens, thunderbolts (XFL), brigade (AFL)
-C: bears
-D: broncos (throwback), dolphins (wordmark)
+B:  thunderbolts (XFL), brigade (AFL)
+C:
+D:  dolphins (wordmark)
 E: eskimos (CFL), express (AAF)
-F: falcons
-G: packers, gamblers (USFL)
+F:
+G: , gamblers (USFL)
 H: hitmen (XFL)
 I: iron (AAF)
 J:
@@ -52,10 +77,10 @@ N: NFC
 O: apollos (AAF)
 P:
 Q:
-R: rams (throwback/alternate), redblacks (CFL)
+R: , redblacks (CFL)
 S: roughriders (CFL)
-T: titans
-U: colts?
+T:
+U:
 V: vipers (XFL)
 W: WFT
 X:

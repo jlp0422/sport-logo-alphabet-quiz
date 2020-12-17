@@ -1,13 +1,4 @@
-const createTeam = sport => ({ title, letters, answers }) => ({
-  filename: title.toLowerCase().split(' ').join('_'),
-  title,
-  letters,
-  allowedAnswers: answers,
-  sport
-})
-
-const createMlbTeam = createTeam('mlb')
-const createMilbTeam = createTeam('milb')
+import { createMilbTeam, createMlbTeam } from '../helpers'
 
 const arizonDiamondbacks = createMlbTeam({
   title: 'Arizona Diamondbacks',
