@@ -1,4 +1,5 @@
-import Button from './Button'
+import Link from 'next/link'
+import Button, { ButtonWithRef } from './shared/Button'
 import CardHeader from './shared/CardHeader'
 import DisplayCard from './shared/DisplayCard'
 
@@ -37,6 +38,9 @@ const PreGame = ({
       >
         Start game!
       </Button>
+      <Link href='/high-scores' passHref>
+        <ButtonWithRef modifier='blue'>See high scores</ButtonWithRef>
+      </Link>
     </DisplayCard>
   )
 }
