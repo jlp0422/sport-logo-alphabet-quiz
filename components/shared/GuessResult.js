@@ -1,6 +1,7 @@
 const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
   const letterForLogo = activeLogo.letters[0].toUpperCase()
   const teamName = activeLogo.title.split(' ').join('&nbsp;')
+  const league = activeLogo.league.toUpperCase()
 
   const [preGuessCopy, color] = isCorrectGuess
     ? ["That's correct!", 'green']
@@ -21,7 +22,7 @@ const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
     >
       <span
         dangerouslySetInnerHTML={{
-          __html: `${preGuessCopy} ${letterForLogo} is for ${teamName}.`
+          __html: `${preGuessCopy} ${letterForLogo} is for ${teamName} (${league}).`
         }}
       />
     </h2>
