@@ -21,3 +21,5 @@ export const createNbaTeam = createTeam('nba', 'basketball')
 export const createWnbaTeam = createTeam('wnba', 'basketball')
 
 export const createNhlTeam = createTeam('nhl', 'hockey')
+export const createAhlTeam = createTeam('ahl', 'hockey')
+export const createWhaTeam = createTeam('wha', 'hockey')
