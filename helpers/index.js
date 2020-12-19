@@ -1,3 +1,5 @@
+import { TOTAL_LOGOS_BY_TYPE } from '../constants/logos'
+
 const LOCAL_STORAGE_KEY = 'SPORT_LOGO_ALPHABET_HIGH_SCORE'
 
 export const getScoresFromStorage = () => {
@@ -60,3 +62,41 @@ export const getStatCopy = logoPack => {
 }
 
 export const createRgb = rgbArr => `rgb(${rgbArr})`
+
+export const sortByAlpha = ([aKey], [bKey]) => {
+  if (aKey > bKey) {
+    return 1
+  }
+  if (aKey < bKey) {
+    return -1
+  }
+  return 0
+}
+
+export const sortByTotal = ([aKey, aCount], [bKey, bCount]) => {
+  // sort desc
+  if (aCount > bCount) {
+    return -1
+  }
+  if (aCount < bCount) {
+    return 1
+  }
+  return 0
+}
+
+export const sortByPercentage = ([aKey, aCount], [bKey, bCount]) => {
+  const aPercent = aCount / TOTAL_LOGOS_BY_TYPE[aKey]
+  const bPercent = bCount / TOTAL_LOGOS_BY_TYPE[bKey]
+
+  // sort desc
+  if (aPercent > bPercent) {
+    return -1
+  }
+  if (aPercent < bPercent) {
+    return 1
+  }
+  return 0
+}
+
+export const getPercentage = ({ amount, total }) =>
+  `${Math.round((amount / total) * 100)}%`

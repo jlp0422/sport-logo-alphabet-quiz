@@ -1,64 +1,38 @@
 import { useState } from 'react'
-import { getScoresFromStorage } from '../helpers'
 import { TOTAL_LOGOS_BY_TYPE } from '../constants/logos'
+import {
+  getScoresFromStorage,
+  sortByAlpha,
+  sortByPercentage,
+  sortByTotal,
+  getPercentage
+} from '../helpers'
 import Button from './shared/Button'
 
-const sortByAlpha = ([aKey], [bKey]) => {
-  if (aKey > bKey) {
-    return 1
-  }
-  if (aKey < bKey) {
-    return -1
-  }
-  return 0
-}
-
-const sortByTotal = ([aKey, aCount], [bKey, bCount]) => {
-  // sort desc
-  if (aCount > bCount) {
-    return -1
-  }
-  if (aCount < bCount) {
-    return 1
-  }
-  return 0
-}
-
-const sortByPercentage = ([aKey, aCount], [bKey, bCount]) => {
-  const aPercent = aCount / TOTAL_LOGOS_BY_TYPE[aKey]
-  const bPercent = bCount / TOTAL_LOGOS_BY_TYPE[bKey]
-
-  // sort desc
-  if (aPercent > bPercent) {
-    return -1
-  }
-  if (aPercent < bPercent) {
-    return 1
-  }
-  return 0
-}
-
 const sortOrderTypes = {
-  alpha: sortByAlpha,
-  total: sortByTotal,
-  percent: sortByPercentage
+  Alphabetic: sortByAlpha,
+  Total: sortByTotal,
+  Percent: sortByPercentage
 }
 
 const HighScores = () => {
-  const [sortOrder, setSortOrder] = useState('alpha')
+  const [sortOrder, setSortOrder] = useState('Alphabetic')
   const allScores = getScoresFromStorage()
   const scoreKeys = Object.entries(allScores)
-  const hasScores = scoreKeys.length
+  const hasScores = Boolean(scoreKeys.length)
 
-  const renderContent = sort => {
+  const renderContent = sortType => {
     if (!hasScores) {
       return <h2>No high scores yet. Play a game first!</h2>
     }
 
-    return scoreKeys.sort(sort).map(([logoPack, score]) => {
+    return scoreKeys.sort(sortType).map(([logoPack, score]) => {
       const totalForLogoPack =
-        sortOrder === 'percent'
-          ? `${Math.round((score / TOTAL_LOGOS_BY_TYPE[logoPack]) * 100)}%`
+        sortOrder === 'Percent'
+          ? getPercentage({
+              amount: score,
+              total: TOTAL_LOGOS_BY_TYPE[logoPack]
+            })
           : score
       return (
         <h2 className='text-xl my-1' key={logoPack}>
@@ -70,20 +44,26 @@ const HighScores = () => {
   }
 
   return (
-    <div className='w-full'>
-      {renderContent(sortOrderTypes[sortOrder])}
-      <div className='flex justify-around'>
-        {['alpha', 'total', 'percent'].map(sortType => (
-          <Button
-            key={sortType}
-            disabled={sortOrder === sortType}
-            modifier='blue'
-            onClick={() => setSortOrder(sortType)}
+    <div className='flex flex-col h-full w-full'>
+      {hasScores && (
+        <div className="flex items-baseline my-0 mx-auto mt-4">
+          <h2 className="font-bold mr-2" htmlFor='sort-order'>Sort:</h2>
+          <select
+            onChange={ev => setSortOrder(ev.target.value)}
+            id='sort-order'
+            name='sort-order'
+            defaultValue={sortOrder}
+            className='focus:border-green-700 focus:ring-green-700 form-select mt-1 block w-9/12 min-w-150 rounded-md'
           >
-            {`${sortType.slice(0, 1).toUpperCase()}${sortType.slice(1)}`}
-          </Button>
-        ))}
-      </div>
+            {['Alphabetic', 'Total', 'Percent'].map(sortType => (
+              <option key={sortType} value={sortType}>
+                {sortType}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+      <div className="mt-4">{renderContent(sortOrderTypes[sortOrder])}</div>
     </div>
   )
 }

@@ -1,6 +1,8 @@
+
+
 /*
 A: avalanche
-B: bruins, senators (AHL)
+B: bruins, senators (AHL) blades (wha)
 C: flames, canadiens
 D: mighty ducks, stars
 E:

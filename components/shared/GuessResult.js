@@ -1,5 +1,4 @@
 const InProgressGame = ({ isCorrectGuess, isIncorrectGuess, activeLogo }) => {
-  console.log({ activeLogo })
   const letterForLogo = activeLogo.letters[0].toUpperCase()
   const teamName = activeLogo.title.split(' ').join('&nbsp;')
 

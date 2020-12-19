@@ -12,7 +12,7 @@ const Logo = ({
 
   return (
     <Image
-      src={`/logos/${logo.sport}/${logo.filename}.png`}
+      src={`/logos/${logo.sport}/${logo.league}/${logo.filename}.png`}
       alt={imageInfo}
       title={imageInfo}
       loading='eager'
