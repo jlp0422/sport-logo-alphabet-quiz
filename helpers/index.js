@@ -48,6 +48,24 @@ export const getRandomLogo = logos => {
   return logos[randomIndex]
 }
 
+export const getNextAlphabetLogo = logos => {
+  if (!logos.length) {
+    return {}
+  }
+  const sorted = logos.sort(sortByLetter)
+  return sorted[0]
+}
+
+const sortByLetter = (a, b) => {
+  if (a.letters[0] > b.letters[0]) {
+    return 1
+  }
+  if (a.letters[0] < b.letters[0]) {
+    return -1
+  }
+  return 0
+}
+
 export const getCurrentGameStatus = (currentStatus, allStatuses) => ({
   isGameNotStarted: currentStatus === allStatuses.NOT_STARTED,
   isGameOver: currentStatus === allStatuses.GAME_OVER,

@@ -33,7 +33,7 @@ const chicagoBears = createNflTeam({
 
 const cincinnatiBengals = createNflTeam({
   title: 'Cincinnati Bengals',
-  letters: ['C'],
+  letters: ['B'],
   answers: ['cincinnati', 'bengals', 'cincinnati bengals']
 })
 

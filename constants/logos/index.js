@@ -16,6 +16,7 @@ const allLogos = [
 ]
 
 export const LOGOS_BY_TYPE = {
+  'Alphabet': allLogos,
   'All Logos': allLogos,
   Baseball: baseballLogos,
   Basketball: basketballLogos,
@@ -31,6 +32,7 @@ export const LOGOS_BY_TYPE = {
 }
 
 export const TOTAL_LOGOS_BY_TYPE = {
+  'Alphabet': allLogos.length,
   'All Logos': allLogos.length,
   Baseball: baseballLogos.length,
   Basketball: basketballLogos.length,
