@@ -13,6 +13,7 @@ import {
   createRgb,
   getCurrentGameStatus,
   getRandomLogo,
+  getNextAlphabetLogo,
   updateScoreInStorage
 } from '../helpers'
 
@@ -21,11 +22,14 @@ function Home() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [palette, setPalette] = useState([[], [], []])
   const { remainingLogos, activeLogo, correctGuesses, logoPack, status } = state
-  const setActiveLogo = () =>
+
+  const setActiveLogo = () => {
+    const fn = logoPack === 'Alphabet' ? getNextAlphabetLogo : getRandomLogo
     dispatch({
       ...actions.SET_ACTIVE_LOGO,
-      activeLogo: getRandomLogo(remainingLogos)
+      activeLogo: fn(remainingLogos)
     })
+  }
 
   const onSelectLogos = ev => {
     const key = ev.target.value

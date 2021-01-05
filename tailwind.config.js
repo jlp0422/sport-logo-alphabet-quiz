@@ -12,10 +12,15 @@ module.exports = {
       height: {
         '50vh': '50vh',
         '60vh': '60vh',
+        '70vh': '70vh',
+        '80vh': '80vh',
         280: '280px'
       },
       minHeight: {
         190: '190px'
+      },
+      minWidth: {
+        150: '150px'
       },
       screens: {
         xs: '420px'

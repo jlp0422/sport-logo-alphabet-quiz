@@ -23,12 +23,12 @@ const Layout = ({ children, primaryColor = '', secondaryColor, tertiaryColor }) 
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       {children}
-      <footer
+      {/* <footer
         className='absolute bottom-0 w-full h-12 flex justify-center items-center border-t border-solid border-gray-400 text-gray-400 bg-green-900'
         style={footerStyles}
       >
         Built by Jeremy Philipson
-      </footer>
+      </footer> */}
     </div>
   )
 }
