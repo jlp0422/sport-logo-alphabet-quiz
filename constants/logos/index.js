@@ -1,10 +1,22 @@
 import { MLB_LOGOS, MILB_LOGOS } from './baseball/logos'
 import { NBA_LOGOS, WNBA_LOGOS } from './basketball/logos'
-import { NFL_LOGOS, XFL_LOGOS, AFL_LOGOS, CFL_LOGOS } from './football/logos'
+import {
+  NFL_LOGOS,
+  XFL_LOGOS,
+  AFL_LOGOS,
+  CFL_LOGOS,
+  USFL_LOGOS
+} from './football/logos'
 import { NHL_LOGOS, AHL_LOGOS, WHA_LOGOS } from './hockey/logos'
 
 const baseballLogos = [...MLB_LOGOS, ...MILB_LOGOS]
-const footballLogos = [...NFL_LOGOS, ...XFL_LOGOS, ...AFL_LOGOS, ...CFL_LOGOS]
+const footballLogos = [
+  ...NFL_LOGOS,
+  ...XFL_LOGOS,
+  ...AFL_LOGOS,
+  ...CFL_LOGOS,
+  ...USFL_LOGOS
+]
 const basketballLogos = [...NBA_LOGOS, ...WNBA_LOGOS]
 const hockeyLogos = [...NHL_LOGOS, ...AHL_LOGOS, ...WHA_LOGOS]
 

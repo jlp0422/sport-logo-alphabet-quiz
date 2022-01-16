@@ -2,9 +2,9 @@ import {
   createNflTeam,
   createXflTeam,
   createAflTeam,
-  createCflTeam
+  createCflTeam,
   // createAafTeam,
-  // createUsflTeam
+  createUsflTeam
 } from '../helpers'
 
 const Afc = createNflTeam({
@@ -215,6 +215,14 @@ export const CFL_LOGOS = [
   torontoArgonauts
 ]
 
+const houstonGamblers = createUsflTeam({
+  title: 'Houston Gamblers',
+  letters: ['G'],
+  answers: ['houston', 'gamblers']
+})
+
+export const USFL_LOGOS = [houstonGamblers]
+
 /*
 A:
 B:
@@ -222,7 +230,7 @@ C:
 D:
 E: express (AAF)
 F:
-G: gamblers (USFL)
+G:
 H:
 I: iron (AAF)
 J:
