@@ -1,8 +1,14 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  purge: ['./pages/**/*.js', './components/**/*.js'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.js', './components/**/*.js'],
   theme: {
     extend: {
+      colors: {
+        green: colors.emerald,
+        yellow: colors.amber,
+        purple: colors.violet
+      },
       width: {
         '50vw': '50vw',
         '80vw': '80vw',
@@ -25,11 +31,6 @@ module.exports = {
       screens: {
         xs: '420px'
       }
-    }
-  },
-  variants: {
-    extend: {
-      opacity: ['disabled']
     }
   },
   plugins: [require('@tailwindcss/forms')]
