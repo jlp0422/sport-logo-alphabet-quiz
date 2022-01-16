@@ -20,9 +20,10 @@ const AnswerForm = ({
   }
   const onSubmit = () => {
     const finalAnswer = answer.trim().replace(/\./g, '').toLowerCase()
-    const setAnswer = logo.allowedAnswers.includes(finalAnswer)
-      ? setCorrectGuess
-      : setIncorrectGuess
+    const isCorrect = logo.allowedAnswers.some(answer =>
+      finalAnswer.includes(answer)
+    )
+    const setAnswer = isCorrect ? setCorrectGuess : setIncorrectGuess
     setAnswer()
   }
 
@@ -45,13 +46,13 @@ const AnswerForm = ({
 
   return (
     <>
-      <div className='flex flex-col sm:flex-row mt-1 relative w-4/5 max-w-2xl my-1 mx-auto mt-4'>
+      <div className='relative flex flex-col w-4/5 max-w-2xl mx-auto my-1 mt-1 mt-4 sm:flex-row'>
         <input
           // ref={inputRef}
           // autoFocus
           type='text'
           placeholder='Whose logo is this?'
-          className='focus:ring-indigo-200 focus:border-indigo-200 block w-full sm:w-4/5 px-4 sm:text-sm border-gray-300 rounded-md mb-4 sm:mb-0 sm:mx-4'
+          className='block w-full px-4 mb-4 border-gray-300 rounded-md focus:ring-indigo-200 focus:border-indigo-200 sm:w-4/5 sm:text-sm sm:mb-0 sm:mx-4'
           value={answer}
           onChange={ev => setAnswer(ev.target.value)}
           readOnly={hasGuessed}
@@ -60,12 +61,12 @@ const AnswerForm = ({
           disabled={!answer}
           onClick={onSubmitOrNext}
           modifier={modifier}
-          className='flex-shrink-0 flex-grow'
+          className='flex-grow flex-shrink-0'
         >
           {copy}
         </Button>
       </div>
-      <div className='mt-8 mb-2 flex flex-col lg:flex-row lg:w-4/5 lg:justify-evenly'>
+      <div className='flex flex-col mt-8 mb-2 lg:flex-row lg:w-4/5 lg:justify-evenly'>
         {hasLogosRemaining && (
           <Button
             onClick={nextAndClear}
