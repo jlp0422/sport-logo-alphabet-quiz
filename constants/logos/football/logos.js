@@ -2,9 +2,8 @@ import {
   createNflTeam,
   createXflTeam,
   createAflTeam,
-  // createCflTeam,
-  // createAafTeam,
-  // createUsflTeam
+  createCflTeam,
+  createUsflTeam
 } from '../helpers'
 
 const Afc = createNflTeam({
@@ -22,59 +21,60 @@ const Nfc = createNflTeam({
 const chicagoCardinals = createNflTeam({
   title: 'Chicago Cardinals',
   letters: ['C'],
-  answers: ['chicago', 'cardinals', 'chicago cardinals']
+  answers: ['chicago', 'cardinals']
 })
 
 const chicagoBears = createNflTeam({
   title: 'Chicago Bears',
   letters: ['C'],
-  answers: ['bears', 'chicago', 'chicago bears', 'da bears']
+  answers: ['bears', 'chicago', 'da bears']
 })
 
 const cincinnatiBengals = createNflTeam({
   title: 'Cincinnati Bengals',
   letters: ['B'],
-  answers: ['cincinnati', 'bengals', 'cincinnati bengals']
+  answers: ['cincinnati', 'bengals']
 })
 
 const baltimoreRavens = createNflTeam({
   title: 'Baltimore Ravens',
   letters: ['B'],
-  answers: ['baltimore', 'ravens', 'baltimore ravens']
+  answers: ['baltimore', 'ravens']
 })
 
 const denverBroncos = createNflTeam({
   title: 'Denver Broncos',
   letters: ['D'],
-  answers: ['denver', 'broncos', 'denver broncos']
+  answers: ['denver', 'broncos']
 })
 
 const greenBayPackers = createNflTeam({
   title: 'Green Bay Packers',
   letters: ['G'],
-  answers: ['packers', 'green bay', 'green bay packers']
+  answers: ['packers', 'green bay']
 })
 
 const stLouisRams = createNflTeam({
   title: 'St Louis Rams',
   letters: ['R'],
-  answers: ['rams', 'st louis', 'st louis rams']
+  answers: ['rams', 'st louis']
 })
 
 const tennesseeTitans = createNflTeam({
   title: 'Tennessee Titans',
   letters: ['T'],
-  answers: ['titans', 'tennessee', 'tennessee titans']
+  answers: ['titans', 'tennessee']
 })
 
 const washingtonFootballTeam = createNflTeam({
   title: 'Washington Football Team',
   letters: ['W'],
-  answers: ['washington', 'football team', 'washington football team']
+  answers: ['washington', 'football team']
 })
 
 export const NFL_LOGOS = [
-  Afc, Nfc,
+  Afc,
+  Nfc,
   chicagoBears,
   denverBroncos,
   greenBayPackers,
@@ -89,70 +89,74 @@ export const NFL_LOGOS = [
 const birminghamThunderbolts = createXflTeam({
   title: 'Birmingham Thunderbolts',
   letters: ['B'],
-  answers: ['birmingham', 'thunderbolts', 'birmingham thunderbolts']
+  answers: ['birmingham', 'thunderbolts']
 })
 
 const newYorkHitmen = createXflTeam({
   title: 'New York Hitmen',
   letters: ['H'],
-  answers: [
-    'new york',
-    'new jersey',
-    'hitmen',
-    'new york hitmen',
-    'new jersey hitmen',
-    'new york/new jersey hitmen'
-  ]
+  answers: ['new york', 'new jersey', 'hitmen', 'new york/new jersey hitmen']
 })
 
 const tampaBayVipers = createXflTeam({
   title: 'Tampa Bay Vipers',
   letters: ['V'],
-  answers: ['tampa bay', 'tampa', 'vipers', 'tampa bay vipers']
+  answers: ['tampa bay', 'tampa', 'vipers']
 })
 
-export const XFL_LOGOS = [birminghamThunderbolts, newYorkHitmen, tampaBayVipers]
+const houstonRoughnecks = createXflTeam({
+  title: 'Houston Roughnecks',
+  letters: ['H'],
+  answers: ['houston', 'roughnecks']
+})
+
+export const XFL_LOGOS = [
+  birminghamThunderbolts,
+  newYorkHitmen,
+  tampaBayVipers,
+  houstonRoughnecks
+]
 
 const baltimoreBrigade = createAflTeam({
   title: 'Baltimore Brigade',
   letters: ['B'],
-  answers: ['baltimore', 'brigade', 'baltimore brigade']
+  answers: ['baltimore', 'brigade']
 })
 
 const arizonaRattlers = createAflTeam({
   title: 'Arizona Rattlers',
   letters: ['R'],
-  answers: ['arizona', 'rattlers', 'arizona rattlers']
+  answers: ['arizona', 'rattlers']
 })
 
 const coloradoCrush = createAflTeam({
   title: 'Colorado Crush',
   letters: ['C'],
-  answers: ['colorado', 'crush', 'colorado crush']
+  answers: ['colorado', 'crush']
 })
 
 const memphisPharaohs = createAflTeam({
   title: 'Memphis Pharaohs',
   letters: ['P'],
-  answers: ['memphis', 'pharaohs', 'memphis pharaohs']
+  answers: ['memphis', 'pharaohs']
 })
 
 const orlandoPredators = createAflTeam({
   title: 'Orlando Predators',
   letters: ['P'],
-  answers: ['orlando', 'predators', 'orlando predators']
+  answers: ['orlando', 'predators']
 })
 
 const spokaneShock = createAflTeam({
   title: 'Spokane Shock',
   letters: ['S'],
-  answers: ['spokane', 'shock', 'spokane shock']
+  answers: ['spokane', 'shock']
 })
 
 const newJerseyGladiators = createAflTeam({
   title: 'New Jersey Gladiators',
   letters: ['G'],
-  answers: ['new jersey', 'gladiators', 'new jersey gladiators']
+  answers: ['new jersey', 'gladiators']
 })
 
 export const AFL_LOGOS = [
@@ -165,31 +169,55 @@ export const AFL_LOGOS = [
   newJerseyGladiators
 ]
 
-/*
-A: AFC
-B:
-C:
-D:
-E: eskimos (CFL), express (AAF)
-F:
-G: , gamblers (USFL)
-H:
-I: iron (AAF)
-J:
-K:
-L:
-M:
-N: NFC
-O: apollos (AAF)
-P:
-Q:
-R: , redblacks (CFL)
-S: roughriders (CFL)
-T:
-U:
-V:
-W:
-X:
-Y:
-Z:
-*/
+const edmontonEskimos = createCflTeam({
+  title: 'Edmonton Eskimos',
+  letters: ['E'],
+  answers: ['edmonton', 'eskimos']
+})
+
+const montrealAlouettes = createCflTeam({
+  title: 'Montreal Alouettes',
+  letters: ['A'],
+  answers: ['montreal', 'alouettes']
+})
+
+const ottawaRedblacks = createCflTeam({
+  title: 'Ottawa Redblacks',
+  letters: ['R'],
+  answers: ['ottawa', 'redblacks']
+})
+
+const saskatchewanRoughriders = createCflTeam({
+  title: 'Saskatchewan Roughriders',
+  letters: ['S'],
+  answers: ['saskatchewan', 'roughriders']
+})
+
+const winnipegBlueBombers = createCflTeam({
+  title: 'Winnipeg Blue Bombers',
+  letters: ['W'],
+  answers: ['winnipeg', 'blue', 'bombers', 'bluebombers']
+})
+
+const torontoArgonauts = createCflTeam({
+  title: 'Toronto Argonauts',
+  letters: ['A'],
+  answers: ['toronto', 'argonauts']
+})
+
+export const CFL_LOGOS = [
+  edmontonEskimos,
+  montrealAlouettes,
+  ottawaRedblacks,
+  saskatchewanRoughriders,
+  winnipegBlueBombers,
+  torontoArgonauts
+]
+
+const houstonGamblers = createUsflTeam({
+  title: 'Houston Gamblers',
+  letters: ['G'],
+  answers: ['houston', 'gamblers']
+})
+
+export const USFL_LOGOS = [houstonGamblers]
