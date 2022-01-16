@@ -3,127 +3,109 @@ import { createMilbTeam, createMlbTeam } from '../helpers'
 const arizonDiamondbacks = createMlbTeam({
   title: 'Arizona Diamondbacks',
   letters: ['A'],
-  answers: [
-    'diamondbacks',
-    'arizona',
-    'dbacks',
-    'arizona diamondbacks',
-    'diamond backs',
-    'arizona diamond backs'
-  ]
+  answers: ['diamondbacks', 'arizona', 'dbacks', 'diamond backs']
 })
 
 const atlantaBraves = createMlbTeam({
   title: 'Atlanta Braves',
   letters: ['A'],
-  answers: ['braves', 'atlanta', 'atlanta braves']
+  answers: ['braves', 'atlanta']
 })
 
 const bostonRedSox = createMlbTeam({
   title: 'Boston Red Sox',
   letters: ['B'],
-  answers: ['red sox', 'boston', 'boston red sox']
+  answers: ['red sox', 'boston']
 })
 
 const losAngelesAngels = createMlbTeam({
   title: 'Los Angeles Angels',
   letters: ['A'],
-  answers: [
-    'la angels',
-    'angels',
-    'los angeles angels',
-    'anaheim angels'
-  ]
+  answers: ['la angels', 'angels', 'los angeles', 'anaheim']
 })
 
 const oaklandAthletics = createMlbTeam({
   title: 'Oakland Athletics',
   letters: ['A'],
-  answers: [
-    'oakland',
-    "a's",
-    'oakland athletics',
-    "oakland a's",
-    'athletics'
-  ]
+  answers: ['oakland', "a's", 'athletics']
 })
 
 const chicagoCubs = createMlbTeam({
   title: 'Chicago Cubs',
   letters: ['C'],
-  answers: ['cubs', 'chicago', 'chicago cubs', 'cubbies']
+  answers: ['cubs', 'chicago', 'cubbies']
 })
 
 const cincinnatiReds = createMlbTeam({
   title: 'Cincinnati Reds',
   letters: ['C'],
-  answers: ['reds', 'cincinnati', 'cincinnati reds']
+  answers: ['reds', 'cincinnati']
 })
 
 const detroitTigers = createMlbTeam({
   title: 'Detroit Tigers',
   letters: ['D'],
-  answers: ['tigers', 'detroit', 'detroit tigers']
+  answers: ['tigers', 'detroit']
 })
 
 const houstonAstros = createMlbTeam({
   title: 'Houston Astros',
   letters: ['H'],
-  answers: ['astros', 'houston', 'houston astros']
+  answers: ['astros', 'houston']
 })
 
 const torontoBlueJays = createMlbTeam({
   title: 'Toronto Blue Jays',
   letters: ['J'],
-  answers: ['toronto', 'blue jays', 'jays', 'toronto blue jays']
+  answers: ['toronto', 'blue jays', 'jays']
 })
 
 const floridaMarlins = createMlbTeam({
   title: 'Florida Marlins',
   letters: ['F'],
-  answers: ['marlins', 'florida', 'florida marlins']
+  answers: ['marlins', 'florida']
 })
 
 const milwaukeeBrewers = createMlbTeam({
   title: 'Milwaukee Brewers',
   letters: ['M'],
-  answers: ['brewers', 'milwaukee', 'milwaukee brewers', 'brew crew']
+  answers: ['brewers', 'milwaukee', 'brew crew']
 })
 
 const montrealExpos = createMlbTeam({
   title: 'Montreal Expos',
   letters: ['M'],
-  answers: ['montreal', 'expos', 'montreal expos']
+  answers: ['montreal', 'expos']
 })
 
 const philadelphiaPhillies = createMlbTeam({
   title: 'Philadelphia Phillies',
   letters: ['P'],
-  answers: ['phillies', 'philadelphia', 'philadelphia phillies']
+  answers: ['phillies', 'philadelphia']
 })
 
 const pittsburghPirates = createMlbTeam({
   title: 'Pittsburgh Pirates',
   letters: ['P'],
-  answers: ['pirates', 'pittsburgh', 'pittsburgh pirates']
+  answers: ['pirates', 'pittsburgh']
 })
 
 const seattleMariners = createMlbTeam({
   title: 'Seattle Mariners',
   letters: ['S'],
-  answers: ['seattle', 'mariners', 'seattle mariners']
+  answers: ['seattle', 'mariners']
 })
 
 const texasRangers = createMlbTeam({
   title: 'Texas Rangers',
   letters: ['T'],
-  answers: ['texas', 'rangers', 'texas rangers']
+  answers: ['texas', 'rangers']
 })
 
 const washingtonNationals = createMlbTeam({
   title: 'Washington Nationals',
   letters: ['W'],
-  answers: ['washington', 'nationals', 'washington nationals']
+  answers: ['washington', 'nationals', 'nats']
 })
 
 export const MLB_LOGOS = [
