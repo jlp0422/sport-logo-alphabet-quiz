@@ -3,7 +3,6 @@ import {
   createXflTeam,
   createAflTeam,
   createCflTeam,
-  // createAafTeam,
   createUsflTeam
 } from '../helpers'
 
@@ -222,32 +221,3 @@ const houstonGamblers = createUsflTeam({
 })
 
 export const USFL_LOGOS = [houstonGamblers]
-
-/*
-A:
-B:
-C:
-D:
-E: express (AAF)
-F:
-G:
-H:
-I: iron (AAF)
-J:
-K:
-L:
-M:
-N:
-O: apollos (AAF)
-P:
-Q:
-R:
-S:
-T:
-U:
-V:
-W:
-X:
-Y:
-Z:
-*/

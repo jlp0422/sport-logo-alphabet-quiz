@@ -8,6 +8,7 @@ import {
   USFL_LOGOS
 } from './football/logos'
 import { NHL_LOGOS, AHL_LOGOS, WHA_LOGOS } from './hockey/logos'
+import { BUNDESLIGA_LOGOS, SERIEA_LOGOS, MLS_LOGOS } from './soccer/logos'
 
 const baseballLogos = [...MLB_LOGOS, ...MILB_LOGOS]
 const footballLogos = [
@@ -19,12 +20,14 @@ const footballLogos = [
 ]
 const basketballLogos = [...NBA_LOGOS, ...WNBA_LOGOS]
 const hockeyLogos = [...NHL_LOGOS, ...AHL_LOGOS, ...WHA_LOGOS]
+const soccerLogos = [...MLS_LOGOS, ...BUNDESLIGA_LOGOS, ...SERIEA_LOGOS]
 
 const allLogos = [
   ...baseballLogos,
   ...footballLogos,
   ...basketballLogos,
-  ...hockeyLogos
+  ...hockeyLogos,
+  ...soccerLogos
 ]
 
 export const LOGOS_BY_TYPE = {
@@ -33,7 +36,8 @@ export const LOGOS_BY_TYPE = {
   Baseball: baseballLogos,
   Basketball: basketballLogos,
   Football: footballLogos,
-  Hockey: hockeyLogos
+  Hockey: hockeyLogos,
+  Soccer: soccerLogos
   // NFL: NFL_LOGOS,
   // NBA: NBA_LOGOS,
   // MLB: MLB_LOGOS,
@@ -49,7 +53,8 @@ export const TOTAL_LOGOS_BY_TYPE = {
   Baseball: baseballLogos.length,
   Basketball: basketballLogos.length,
   Football: footballLogos.length,
-  Hockey: hockeyLogos.length
+  Hockey: hockeyLogos.length,
+  Soccer: soccerLogos.length
   // NFL: NFL_LOGOS.length,
   // NBA: NBA_LOGOS.length,
   // MLB: MLB_LOGOS.length,
