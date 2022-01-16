@@ -54,6 +54,30 @@ const vancouverCanucks = createNhlTeam({
   answers: ['vancouver', 'canucks']
 })
 
+const atlantaFlames = createNhlTeam({
+  title: 'Atlanta Flames',
+  letters: ['A'],
+  answers: ['atlanta', 'flames']
+})
+
+const minnesotaNorthStars = createNhlTeam({
+  title: 'Minnesota North Stars',
+  letters: ['N'],
+  answers: ['minnesota', 'north stars', 'northstars']
+})
+
+const montrealMaroons = createNhlTeam({
+  title: 'Montreal Maroons',
+  letters: ['M'],
+  answers: ['montreal', 'maroons']
+})
+
+const montrealWanderers = createNhlTeam({
+  title: 'Montreal Wanderers',
+  letters: ['W'],
+  answers: ['montreal', 'wanderers']
+})
+
 export const NHL_LOGOS = [
   coloradoAvalanche,
   bostonBruins,
@@ -63,7 +87,11 @@ export const NHL_LOGOS = [
   dallasStars,
   seattleKraken,
   vegasGoldenKnights,
-  vancouverCanucks
+  vancouverCanucks,
+  atlantaFlames,
+  minnesotaNorthStars,
+  montrealMaroons,
+  montrealWanderers
 ]
 
 const bellevilleSenators = createAhlTeam({
@@ -105,7 +133,7 @@ const baltimoreBlades = createWhaTeam({
 
 const hartfordWhalers = createWhaTeam({
   title: 'Hartford Whalers',
-  letters: ['W'],
+  letters: ['W', 'H'],
   answers: ['hartford', 'whalers']
 })
 
