@@ -1,8 +1,8 @@
 import {
   createNflTeam,
   createXflTeam,
-  createAflTeam
-  // createCflTeam,
+  createAflTeam,
+  createCflTeam
   // createAafTeam,
   // createUsflTeam
 } from '../helpers'
@@ -105,7 +105,18 @@ const tampaBayVipers = createXflTeam({
   answers: ['tampa bay', 'tampa', 'vipers']
 })
 
-export const XFL_LOGOS = [birminghamThunderbolts, newYorkHitmen, tampaBayVipers]
+const houstonRoughnecks = createXflTeam({
+  title: 'Houston Roughnecks',
+  letters: ['H'],
+  answers: ['houston', 'roughnecks']
+})
+
+export const XFL_LOGOS = [
+  birminghamThunderbolts,
+  newYorkHitmen,
+  tampaBayVipers,
+  houstonRoughnecks
+]
 
 const baltimoreBrigade = createAflTeam({
   title: 'Baltimore Brigade',
@@ -159,12 +170,57 @@ export const AFL_LOGOS = [
   newJerseyGladiators
 ]
 
+const edmontonEskimos = createCflTeam({
+  title: 'Edmonton Eskimos',
+  letters: ['E'],
+  answers: ['edmonton', 'eskimos']
+})
+
+const montrealAlouettes = createCflTeam({
+  title: 'Montreal Alouettes',
+  letters: ['A'],
+  answers: ['montreal', 'alouettes']
+})
+
+const ottawaRedblacks = createCflTeam({
+  title: 'Ottawa Redblacks',
+  letters: ['R'],
+  answers: ['ottawa', 'redblacks']
+})
+
+const saskatchewanRoughriders = createCflTeam({
+  title: 'Saskatchewan Roughriders',
+  letters: ['S'],
+  answers: ['saskatchewan', 'roughriders']
+})
+
+const winnipegBlueBombers = createCflTeam({
+  title: 'Winnipeg Blue Bombers',
+  letters: ['W'],
+  answers: ['winnipeg', 'blue', 'bombers', 'bluebombers']
+})
+
+const torontoArgonauts = createCflTeam({
+  title: 'Toronto Argonauts',
+  letters: ['A'],
+  answers: ['toronto', 'argonauts']
+})
+
+export const CFL_LOGOS = [
+  edmontonEskimos,
+  montrealAlouettes,
+  ottawaRedblacks,
+  saskatchewanRoughriders,
+  winnipegBlueBombers,
+  torontoArgonauts
+]
+
 /*
-A: AFC
+A:
 B:
 C:
 D:
-E: eskimos (CFL), express (AAF)
+E: express (AAF)
 F:
 G: gamblers (USFL)
 H:
@@ -173,12 +229,12 @@ J:
 K:
 L:
 M:
-N: NFC
+N:
 O: apollos (AAF)
 P:
 Q:
-R: , redblacks (CFL)
-S: roughriders (CFL)
+R:
+S:
 T:
 U:
 V:

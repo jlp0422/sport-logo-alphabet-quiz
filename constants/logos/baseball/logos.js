@@ -42,6 +42,12 @@ const cincinnatiReds = createMlbTeam({
   answers: ['reds', 'cincinnati']
 })
 
+const clevelandGuardians = createMlbTeam({
+  title: 'Cleveland Guardians',
+  letters: ['G'],
+  answers: ['cleveland', 'guardians']
+})
+
 const detroitTigers = createMlbTeam({
   title: 'Detroit Tigers',
   letters: ['D'],
@@ -112,6 +118,7 @@ export const MLB_LOGOS = [
   atlantaBraves,
   arizonDiamondbacks,
   losAngelesAngels,
+  clevelandGuardians,
   oaklandAthletics,
   bostonRedSox,
   chicagoCubs,
