@@ -5,7 +5,8 @@ import {
   XFL_LOGOS,
   AFL_LOGOS,
   CFL_LOGOS,
-  USFL_LOGOS
+  USFL_LOGOS,
+  AAF_LOGOS
 } from './football/logos'
 import { NHL_LOGOS, AHL_LOGOS, WHA_LOGOS } from './hockey/logos'
 import { BUNDESLIGA_LOGOS, SERIEA_LOGOS, MLS_LOGOS } from './soccer/logos'
@@ -16,7 +17,8 @@ const footballLogos = [
   ...XFL_LOGOS,
   ...AFL_LOGOS,
   ...CFL_LOGOS,
-  ...USFL_LOGOS
+  ...USFL_LOGOS,
+  ...AAF_LOGOS
 ]
 const basketballLogos = [...NBA_LOGOS, ...WNBA_LOGOS]
 const hockeyLogos = [...NHL_LOGOS, ...AHL_LOGOS, ...WHA_LOGOS]
