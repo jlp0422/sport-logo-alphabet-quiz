@@ -27,7 +27,7 @@ const losAngelesAngels = createMlbTeam({
 const oaklandAthletics = createMlbTeam({
   title: 'Oakland Athletics',
   letters: ['A'],
-  answers: ['oakland', "a's", 'athletics']
+  answers: ['oakland', "as", 'athletics']
 })
 
 const chicagoCubs = createMlbTeam({
