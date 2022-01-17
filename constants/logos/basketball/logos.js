@@ -57,7 +57,7 @@ const houstonRockets = createNbaTeam({
 const seattleSuperSonics = createNbaTeam({
   title: 'Seattle SuperSonics',
   letters: ['S'],
-  answers: ['seattle', 'supersonics', 'super sonics']
+  answers: ['seattle', 'supersonics', 'super sonics', 'sonics']
 })
 
 export const NBA_LOGOS = [
