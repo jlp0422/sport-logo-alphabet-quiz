@@ -74,7 +74,8 @@ export const getCurrentGameStatus = (currentStatus, allStatuses) => ({
   isWaitingForGuess: currentStatus === allStatuses.WAITING_FOR_GUESS
 })
 
-export const cleanAnswer = string => string.replace(/\./g, '').toLowerCase()
+export const cleanAnswer = string =>
+  string.trim().replace(/\./g, '').toLowerCase()
 
 export const getStatCopy = logoPack => {
   const copy = logoPack === 'ALL' ? 'All' : logoPack
