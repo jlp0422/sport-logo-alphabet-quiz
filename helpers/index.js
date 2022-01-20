@@ -78,6 +78,8 @@ export const cleanAnswer = string =>
   string
     .trim()
     .replace(/('|"|\.)/g, '')
+    .replace('university of', '')
+    .trim()
     .toLowerCase()
 
 export const getStatCopy = logoPack => {
