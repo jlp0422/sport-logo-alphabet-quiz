@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import Button from './shared/Button'
+import { cleanAnswer } from '../helpers/index'
 
 const AnswerForm = ({
   onNextLogo,
@@ -19,7 +20,7 @@ const AnswerForm = ({
     // inputRef.current.focus()
   }
   const onSubmit = () => {
-    const finalAnswer = answer.trim().replace(/\./g, '').toLowerCase()
+    const finalAnswer = cleanAnswer(answer)
     const isCorrect = logo.allowedAnswers.some(answer =>
       finalAnswer.includes(answer)
     )
