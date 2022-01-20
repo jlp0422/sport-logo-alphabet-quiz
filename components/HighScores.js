@@ -35,7 +35,7 @@ const HighScores = () => {
             })
           : score
       return (
-        <h2 className='text-xl my-1' key={logoPack}>
+        <h2 className='my-1 text-xl' key={logoPack}>
           <strong>{logoPack}:&nbsp;</strong>
           {totalForLogoPack}
         </h2>
@@ -44,16 +44,16 @@ const HighScores = () => {
   }
 
   return (
-    <div className='flex flex-col h-full w-full'>
+    <div className='flex flex-col w-full h-full'>
       {hasScores && (
-        <div className="flex items-baseline my-0 mx-auto mt-4">
-          <h2 className="font-bold mr-2" htmlFor='sort-order'>Sort:</h2>
+        <div className="flex items-baseline mx-auto my-0 mt-4">
+          <h2 className="mr-2 font-bold" htmlFor='sort-order'>Sort:</h2>
           <select
             onChange={ev => setSortOrder(ev.target.value)}
             id='sort-order'
             name='sort-order'
             defaultValue={sortOrder}
-            className='focus:border-green-700 focus:ring-green-700 form-select mt-1 block w-9/12 min-w-150 rounded-md'
+            className='block w-9/12 mt-1 rounded-md focus:border-green-700 focus:ring-green-700 form-select min-w-150'
           >
             {['Alphabetic', 'Total', 'Percent'].map(sortType => (
               <option key={sortType} value={sortType}>
@@ -63,7 +63,7 @@ const HighScores = () => {
           </select>
         </div>
       )}
-      <div className="mt-4">{renderContent(sortOrderTypes[sortOrder])}</div>
+      <div className="my-4">{renderContent(sortOrderTypes[sortOrder])}</div>
     </div>
   )
 }
