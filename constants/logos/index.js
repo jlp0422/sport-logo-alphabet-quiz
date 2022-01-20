@@ -40,10 +40,10 @@ export const LOGOS_BY_TYPE = {
   'All Logos': allLogos,
   Baseball: baseballLogos,
   Basketball: basketballLogos,
+  College: collegeLogos,
   Football: footballLogos,
   Hockey: hockeyLogos,
-  Soccer: soccerLogos,
-  College: collegeLogos
+  Soccer: soccerLogos
   // NFL: NFL_LOGOS,
   // NBA: NBA_LOGOS,
   // MLB: MLB_LOGOS,
@@ -58,10 +58,10 @@ export const TOTAL_LOGOS_BY_TYPE = {
   'All Logos': allLogos.length,
   Baseball: baseballLogos.length,
   Basketball: basketballLogos.length,
+  College: collegeLogos.length,
   Football: footballLogos.length,
   Hockey: hockeyLogos.length,
-  Soccer: soccerLogos.length,
-  College: collegeLogos.length
+  Soccer: soccerLogos.length
   // NFL: NFL_LOGOS.length,
   // NBA: NBA_LOGOS.length,
   // MLB: MLB_LOGOS.length,
