@@ -47,7 +47,13 @@ const AnswerForm = ({
 
   return (
     <>
-      <div className='relative flex flex-col w-4/5 max-w-2xl mx-auto my-1 mt-1 mt-4 sm:flex-row'>
+      <form
+        onSubmit={ev => {
+          ev.preventDefault()
+          onSubmitOrNext()
+        }}
+        className='relative flex flex-col w-4/5 max-w-2xl mx-auto my-1 mt-1 mt-4 sm:flex-row'
+      >
         <input
           // ref={inputRef}
           // autoFocus
@@ -60,13 +66,12 @@ const AnswerForm = ({
         />
         <Button
           disabled={!answer}
-          onClick={onSubmitOrNext}
           modifier={modifier}
           className='flex-grow flex-shrink-0'
         >
           {copy}
         </Button>
-      </div>
+      </form>
       <div className='flex flex-col mt-8 mb-2 lg:flex-row lg:w-4/5 lg:justify-evenly'>
         {hasLogosRemaining && (
           <Button
