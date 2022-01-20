@@ -5,7 +5,7 @@ const createTeam =
     title,
     letters,
     allowedAnswers: answers,
-    sport,
+    ...(sport ? { sport } : null),
     league
   })
 
@@ -29,3 +29,5 @@ export const createWhaTeam = createTeam('wha', 'hockey')
 export const createMlsTeam = createTeam('mls', 'soccer')
 export const createBundesligaTeam = createTeam('bundesliga', 'soccer')
 export const createSerieATeam = createTeam('seriea', 'soccer')
+
+export const createCollegeTeam = createTeam('college')
