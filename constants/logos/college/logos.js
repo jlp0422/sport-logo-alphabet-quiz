@@ -213,7 +213,7 @@ const miami = createCollegeTeam({
 const miamiOhio = createCollegeTeam({
   title: 'Miami Ohio Redhawks',
   letters: ['M'],
-  answers: ['miami', 'miami ohio', 'redhawks']
+  answers: ['miami', 'miami ohio', 'redhawks', 'miami of ohio', 'miami (ohio)']
 })
 
 const michigan = createCollegeTeam({
@@ -462,6 +462,7 @@ export const COLLEGE_LOGOS = [
   florida,
   fordham,
   georgia,
+  hartford,
   harvard,
   hawaii,
   idaho,
