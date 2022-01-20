@@ -14,9 +14,7 @@ const AnswerForm = ({
   const numLogosRemaining = remainingLogos.length
   const hasLogosRemaining = numLogosRemaining > 0
   const [answer, setAnswer] = useState('')
-  const clearAnswer = () => {
-    setAnswer('')
-  }
+
   const onSubmit = () => {
     const finalAnswer = cleanAnswer(answer)
     const isCorrect = logo.allowedAnswers.some(answer =>
@@ -28,7 +26,7 @@ const AnswerForm = ({
 
   const nextAndClear = () => {
     onNextLogo()
-    clearAnswer()
+    setAnswer('')
   }
 
   const getNextLogic = () => {
