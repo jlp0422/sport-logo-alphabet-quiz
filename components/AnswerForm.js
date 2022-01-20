@@ -20,8 +20,8 @@ const AnswerForm = ({
     const isCorrect = logo.allowedAnswers.some(answer =>
       finalAnswer.includes(answer)
     )
-    const setAnswer = isCorrect ? setCorrectGuess : setIncorrectGuess
-    setAnswer()
+    const setGuessAccuracy = isCorrect ? setCorrectGuess : setIncorrectGuess
+    setGuessAccuracy()
   }
 
   const nextAndClear = () => {
