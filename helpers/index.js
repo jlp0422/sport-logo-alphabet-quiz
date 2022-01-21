@@ -1,4 +1,7 @@
 import { TOTAL_LOGOS_BY_TYPE } from '../constants/logos'
+import duration from 'dayjs/plugin/duration'
+import dayjs from 'dayjs'
+dayjs.extend(duration)
 
 const LOCAL_STORAGE_KEY = 'SPORT_LOGO_ALPHABET_HIGH_SCORE'
 
@@ -30,10 +33,8 @@ export const formatGameDuration = gameDurationMs => {
   if (!gameDurationMs) {
     return null
   }
-  const durationTime = new Date(gameDurationMs)
-  const minutes = durationTime.getMinutes()
-  const seconds = durationTime.getSeconds()
-  return `${minutes}:${seconds}`
+  const gameDuration = dayjs.duration(gameDurationMs)
+  return gameDuration.format('M[m] ss[s]')
 }
 
 const getScoresKey = isTimedMode => (isTimedMode ? 'timed' : 'untimed')
@@ -118,6 +119,12 @@ export const cleanAnswer = string =>
 export const getStatCopy = logoPack => {
   const copy = logoPack === 'ALL' ? 'All' : logoPack
   return `${copy} Logos`
+}
+
+export const capitalize = str => {
+  const firstLetter = str[0]
+  const remaining = str.slice(1)
+  return `${firstLetter.toUpperCase()}${remaining}`
 }
 
 export const createRgb = rgbArr => `rgb(${rgbArr})`
