@@ -29,6 +29,7 @@ const AnswerForm = ({
     onNextLogo()
     setAnswer('')
     if (inputRef?.current) {
+      inputRef.current.blur()
       inputRef.current.focus()
     }
   }
@@ -56,7 +57,6 @@ const AnswerForm = ({
       >
         <input
           ref={inputRef}
-          autoFocus
           type='text'
           placeholder='Whose logo is this?'
           className='block w-full px-4 mb-4 border-gray-300 rounded-md focus:ring-indigo-200 focus:border-indigo-200 sm:w-4/5 sm:text-sm sm:mb-0 sm:mx-4'
