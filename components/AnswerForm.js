@@ -87,7 +87,7 @@ const AnswerForm = ({
           {copy}
         </Button>
       </form>
-      <div className='h-8'>{renderHint(showHint)}</div>
+      <div className='h-8 mt-2'>{renderHint(showHint)}</div>
       <div className='flex flex-col mt-8 mb-2 lg:flex-row lg:w-4/5 lg:justify-evenly'>
         {hasLogosRemaining && (
           <Button
