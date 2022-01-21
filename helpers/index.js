@@ -34,7 +34,7 @@ export const formatGameDuration = gameDurationMs => {
     return null
   }
   const gameDuration = dayjs.duration(gameDurationMs)
-  return gameDuration.format('M[m] ss[s]')
+  return gameDuration.format('m[m] s[s]')
 }
 
 const getScoresKey = isTimedMode => (isTimedMode ? 'timed' : 'untimed')
@@ -50,14 +50,20 @@ export const updateScoreInStorage = (
   const scoresForGameType = scores[key] || {}
   const scoresForLogoPack = scoresForGameType[logoPack] || {}
   const prevHighScoreForSport = scoresForLogoPack.score || 0
+  const prevLowDurationForSport = scoresForLogoPack.duration || 0
 
   const newHighScoreForSport = Math.max(prevHighScoreForSport, correctGuesses)
+  const newLowDurationForSport =
+    newHighScoreForSport > prevHighScoreForSport
+      ? gameDuration
+      : Math.min(prevLowDurationForSport, gameDuration)
+
   const updatedScoresForStorage = Object.assign({}, scores, {
     [key]: {
       ...scores[key],
       [logoPack]: {
         score: newHighScoreForSport,
-        ...(isTimed(key) ? { duration: gameDuration } : {})
+        ...(isTimed(key) ? { duration: newLowDurationForSport } : {})
       }
     }
   })

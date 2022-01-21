@@ -8,14 +8,7 @@ import Button, { ButtonWithRef } from './shared/Button'
 import CardHeader from './shared/CardHeader'
 import DisplayCard from './shared/DisplayCard'
 
-const GameOver = ({
-  correctGuesses,
-  restartGame,
-  logoPack,
-  isTimedMode,
-  startTime,
-  endTime
-}) => {
+const GameOver = ({ correctGuesses, restartGame, logoPack, isTimedMode }) => {
   const highScore = getScoreForSportFromStorage(logoPack, isTimedMode)
   return (
     <DisplayCard borderColor='gray'>

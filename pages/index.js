@@ -105,8 +105,6 @@ function Home() {
             restartGame={restartGame}
             logoPack={logoPack}
             isTimedMode={isTimedMode}
-            startTime={startTime}
-            endTime={endTime}
           />
         )}
 

@@ -33,9 +33,10 @@ const PreGame = ({
         ))}
       </select>
       <div>
-        <label>
+        <label className='flex items-center gap-2'>
           <h3>Timed mode</h3>
           <input
+            className='rounded'
             type='checkbox'
             onChange={() => setIsTimedMode(timedMode => !timedMode)}
             checked={isTimedMode}
