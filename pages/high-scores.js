@@ -13,13 +13,13 @@ const DynamicHighScoresList = dynamic(
 
 const HighScores = () => {
   return (
-    <Layout tltle='Sport Logo Alphabet Quiz'>
+    <Layout title='Sport Logo Alphabet Quiz'>
       <DisplayCard borderColor='green' narrowHeight="h-70vh" height="h-70vh">
-        <CardHeader element='h2'>All-Time High&nbsp;Scores</CardHeader>
+        <CardHeader element='h2'>Your High&nbsp;Scores</CardHeader>
         <DynamicHighScoresList />
         <Link href='/'>
           <ButtonWithRef isButton={false} modifier='green'>
-            Back home
+            Home
           </ButtonWithRef>
         </Link>
       </DisplayCard>

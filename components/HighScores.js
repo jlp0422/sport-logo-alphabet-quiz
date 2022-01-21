@@ -7,7 +7,6 @@ import {
   sortByTotal,
   getPercentage
 } from '../helpers'
-import Button from './shared/Button'
 
 const sortOrderTypes = {
   Alphabetic: sortByAlpha,
