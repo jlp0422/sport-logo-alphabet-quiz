@@ -19,15 +19,47 @@ export const getScoresFromStorage = () => {
   return parsedStorage
 }
 
-export const updateScoreInStorage = ({ logoPack, correctGuesses }) => {
+export const getDuration = ({ startTime, endTime }) => {
+  if (!startTime || !endTime) {
+    return null
+  }
+  return endTime - startTime
+}
+
+export const formatGameDuration = gameDurationMs => {
+  if (!gameDurationMs) {
+    return null
+  }
+  const durationTime = new Date(gameDurationMs)
+  const minutes = durationTime.getMinutes()
+  const seconds = durationTime.getSeconds()
+  return `${minutes}:${seconds}`
+}
+
+const getScoresKey = isTimedMode => (isTimedMode ? 'timed' : 'untimed')
+const isTimed = key => key === 'timed'
+
+export const updateScoreInStorage = (
+  { logoPack, correctGuesses },
+  { startTime, endTime } = {}
+) => {
+  const gameDuration = getDuration({ startTime, endTime })
+  const key = getScoresKey(gameDuration)
   const scores = getScoresFromStorage()
-  const prevHighScoreForSport = scores[logoPack] || 0
+  const scoresForGameType = scores[key] || {}
+  const scoresForLogoPack = scoresForGameType[logoPack] || {}
+  const prevHighScoreForSport = scoresForLogoPack.score || 0
 
   const newHighScoreForSport = Math.max(prevHighScoreForSport, correctGuesses)
-  const updatedScoresForStorage = {
-    ...scores,
-    [logoPack]: newHighScoreForSport
-  }
+  const updatedScoresForStorage = Object.assign({}, scores, {
+    [key]: {
+      ...scores[key],
+      [logoPack]: {
+        score: newHighScoreForSport,
+        ...(isTimed(key) ? { duration: gameDuration } : {})
+      }
+    }
+  })
 
   window.localStorage.setItem(
     LOCAL_STORAGE_KEY,
@@ -35,9 +67,10 @@ export const updateScoreInStorage = ({ logoPack, correctGuesses }) => {
   )
 }
 
-export const getScoreForSportFromStorage = logoPack => {
+export const getScoreForSportFromStorage = (logoPack, isTimedMode) => {
+  const key = getScoresKey(isTimedMode)
   const scores = getScoresFromStorage()
-  return scores[logoPack] || 0
+  return scores[key][logoPack] || 0
 }
 
 export const getRandomLogo = logos => {

@@ -21,6 +21,9 @@ function Home() {
   const { reducer, initialState } = createReducerAndState(STATUSES)
   const [state, dispatch] = useReducer(reducer, initialState)
   const [palette, setPalette] = useState([[], [], []])
+  const [isTimedMode, setIsTimedMode] = useState(false)
+  const [startTime, setStartTime] = useState(null)
+  const [endTime, setEndTime] = useState(null)
   const { remainingLogos, activeLogo, correctGuesses, logoPack, status } = state
 
   const setActiveLogo = () => {
@@ -45,13 +48,24 @@ function Home() {
   const onStartGame = () => {
     dispatch(actions.START_GAME)
     setActiveLogo()
+    if (isTimedMode) {
+      setStartTime(new Date().getTime())
+    }
   }
 
   const setCorrectGuess = () => dispatch(actions.CORRECT_GUESS)
   const setIncorrectGuess = () => dispatch(actions.INCORRECT_GUESS)
-  const restartGame = () => dispatch(actions.RESET_GAME)
+
+  const restartGame = () => {
+    setStartTime(null)
+    setEndTime(null)
+    dispatch(actions.RESET_GAME)
+  }
+
   const setGameFinal = () => {
-    updateScoreInStorage(state)
+    const gameEndTime = new Date().getTime()
+    setEndTime(gameEndTime)
+    updateScoreInStorage(state, { startTime, endTime: gameEndTime })
     dispatch(actions.GAME_OVER)
   }
 
@@ -80,6 +94,8 @@ function Home() {
             sportLogos={Object.keys(LOGOS_BY_TYPE)}
             onStartGame={onStartGame}
             hasSelectedSport={remainingLogos.length}
+            isTimedMode={isTimedMode}
+            setIsTimedMode={setIsTimedMode}
           />
         )}
 
@@ -88,6 +104,9 @@ function Home() {
             correctGuesses={correctGuesses}
             restartGame={restartGame}
             logoPack={logoPack}
+            isTimedMode={isTimedMode}
+            startTime={startTime}
+            endTime={endTime}
           />
         )}
 
