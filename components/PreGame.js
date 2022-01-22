@@ -7,6 +7,8 @@ const PreGame = ({
   onSelectLogos,
   sportLogos,
   hasSelectedSport,
+  setIsTimedMode,
+  isTimedMode,
   onStartGame
 }) => {
   return (
@@ -19,7 +21,7 @@ const PreGame = ({
         id='logo-selection'
         name='logo-selection'
         defaultValue='0'
-        className='focus:border-green-700 focus:ring-green-700 form-select mt-1 block w-full rounded-md'
+        className='block w-full mt-1 rounded-md focus:border-green-700 focus:ring-green-700 form-select'
       >
         <option value='0' disabled>
           Select...
@@ -30,6 +32,17 @@ const PreGame = ({
           </option>
         ))}
       </select>
+      <div>
+        <label className='flex items-center gap-2'>
+          <h3>Timed mode</h3>
+          <input
+            className='rounded'
+            type='checkbox'
+            onChange={() => setIsTimedMode(timedMode => !timedMode)}
+            checked={isTimedMode}
+          />
+        </label>
+      </div>
       <Button
         disabled={!hasSelectedSport}
         onClick={onStartGame}

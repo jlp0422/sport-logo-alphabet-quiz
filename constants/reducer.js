@@ -3,7 +3,7 @@ const createReducerAndState = statuses => {
     correctGuesses: 0,
     activeLogo: {},
     remainingLogos: [],
-    usedLogos: [],
+    usedLogos: [], // not being used
     logoPack: null,
     status: statuses.NOT_STARTED
   }
