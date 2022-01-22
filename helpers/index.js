@@ -6,17 +6,20 @@ dayjs.extend(duration)
 const LOCAL_STORAGE_KEY = 'SPORT_LOGO_ALPHABET_HIGH_SCORE'
 
 export const getScoresFromStorage = () => {
+  const defaultStorage = { timed: {}, untimed: {} }
   if (!window) {
-    return {}
+    return defaultStorage
   }
 
-  const rawStorage = window.localStorage.getItem(LOCAL_STORAGE_KEY) || '{}'
+  const rawStorage =
+    window.localStorage.getItem(LOCAL_STORAGE_KEY) ||
+    JSON.stringify(defaultStorage)
   let parsedStorage
 
   try {
     parsedStorage = JSON.parse(rawStorage)
   } catch (e) {
-    parsedStorage = {}
+    parsedStorage = defaultStorage
   }
 
   return parsedStorage

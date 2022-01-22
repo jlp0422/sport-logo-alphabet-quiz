@@ -34,7 +34,7 @@ const AnswerForm = ({
   const renderHint = isHint => {
     if (isHint) {
       return (
-        <h2 className='px-4 py-2 text-sm font-bold text-white'>
+        <h2 className='px-4 py-2 font-bold text-white text-md'>
           League: {logo.league.toUpperCase()}
         </h2>
       )
