@@ -14,6 +14,7 @@ const AnswerForm = ({
   const numLogosRemaining = remainingLogos.length
   const hasLogosRemaining = numLogosRemaining > 0
   const [answer, setAnswer] = useState('')
+  const [showHint, setShowHint] = useState(false)
 
   const onSubmit = () => {
     const finalAnswer = cleanAnswer(answer)
@@ -27,6 +28,26 @@ const AnswerForm = ({
   const nextAndClear = () => {
     onNextLogo()
     setAnswer('')
+    setShowHint(false)
+  }
+
+  const renderHint = isHint => {
+    if (isHint) {
+      return (
+        <h2 className='px-4 py-2 text-sm font-bold text-white'>
+          League: {logo.league.toUpperCase()}
+        </h2>
+      )
+    }
+    return (
+      <Button
+        modifier='slate'
+        className='text-sm'
+        onClick={() => setShowHint(true)}
+      >
+        Show hint
+      </Button>
+    )
   }
 
   const getNextLogic = () => {
@@ -66,6 +87,7 @@ const AnswerForm = ({
           {copy}
         </Button>
       </form>
+      <div className='h-8 mt-2'>{renderHint(showHint)}</div>
       <div className='flex flex-col mt-8 mb-2 lg:flex-row lg:w-4/5 lg:justify-evenly'>
         {hasLogosRemaining && (
           <Button

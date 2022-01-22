@@ -25,6 +25,9 @@ const Button = ({
     }`,
     blue: `bg-blue-500 focus:ring-blue-400 ${
       disabled ? '' : 'hover:bg-blue-700'
+    }`,
+    slate: `bg-slate-500 focus:ring-slate-400 ${
+      disabled ? '' : 'hover:bg-slate-700'
     }`
   }
   const colors = modifierToColors[modifier]
